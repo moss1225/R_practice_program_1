@@ -1,32 +1,65 @@
-1.绘制直方图函数hist(x$x1)
+（1）.绘制直方图函数hist(x$x1)
 
-2.散点图plot(x$x1,x$x2)
+（2）散点图plot(x$x1,x$x2)
 
-3.柱状图
+（3）柱状图
 ***table(x$x1)
 ***barplot(table(x$x1))
 
-4.饼图pie(table(x$x1))
+（4）饼图pie(table(x$x1))
 
-5.箱尾图boxplot(x$x1,x$x2,x$x3)
+（5）箱尾图boxplot(x$x1,x$x2,x$x3)
 
-6.箱线图
+（6）箱线图
 ***boxplot(x[2:4],col=("red","green","blue"),notch=T) notch是否有缺口
 ***boxplot(x$x1,x$x2,x$x3,col=c("red","green","blue"),notch=T,horizontal=T)水平放置
 
-7.星相图
+（7）星相图
 ***stars(x[c("x1","x2","x3")])
 ***stars(x[c("x1","x2","x3")],full=T,draw.segment=T)
 ***stars(x[c("x1","x2","x3")],full=F,draw.segment=T)
 
-8.teachingDemos包
+（8）teachingDemos包
 ***library(teachingDemos)
 ***face2(x)
 
-9.茎叶图
+（9）茎叶图
 ***stem(x$x1)
 
-10.qq图
+（10）Q-Q图
 判断是不是正态分布qqnorm(x1)
 斜率是标准差，截距是均值qqline(x1)
 点的散布越接近直线，则越接近正态分布
+
+(11)散点图的进一步设置
+***plot(x$x1,x$x2,
+***main="数学分析与线性代数成绩的关系",#标题
+***xlab="数学分析",#横坐标名称
+***ylab="线性代数",,#纵坐标名称
+***xlim=c(0,100),#单位
+***ylin=c(0,100),#单位
+*** xaxs="i",坐标轴显示风格
+***yaxs="i",坐标轴显示风格
+***col="red",
+***pch=19)点的风格
+
+(12)连线图
+***a=c(2,3,4,5,6)
+***b=c(4,7,8,9,12)
+***plot(a,b,type="l")
+
+(13)多条线的效果
+***plot(rain$Tokyo,type="l",col=red,
+***ylim=c(0,300),
+***main="Monthly Rainfall in Major cities",
+***xlab="Month of year",
+***ylab="rainfall(mm)",
+***lwd=2)#线宽
+***lines(rain$NewYork,type="l",col="blue",lwd=2)
+***lines(rain$London,type="l",col="green",lwd=2)
+***lines(rain$berlin,type="l",col="orange",lwd=2)
+
+(14)分布函数的密度图
+plot(density(x))
+
+(15)函数data列出内置数据
