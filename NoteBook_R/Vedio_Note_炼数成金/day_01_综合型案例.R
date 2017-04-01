@@ -32,3 +32,7 @@ apply(x,2,max)
 			#↑按列求最大值
 apply(x[c("x1","x2","x3")],2,sum)
 			#↑按列求和
+which.max(apply(x[c("x1","x2","x3")],2,sum))
+			#↑求出总分最大同学分的编号
+x$num[which.max(apply(x[c("x1","x2","x3")],2,sum))]
+			#↑求出总分最大同学分的学号
