@@ -1,0 +1,10 @@
+*读取R文件 source(1.R)
+
+*退出q()
+
+*查看工作目录getwd()
+
+*修改工作目录setwd()
+
+*保存数据
+	write.table(对象,file="位置\\mark.txt"，col.names=F,row.names=F,sep=" ")

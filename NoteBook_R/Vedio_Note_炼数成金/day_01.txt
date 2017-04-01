@@ -32,7 +32,7 @@ x=c(1:100)
 
 	（3）函数which
 a=c(2,3,4,5,6,7,8,9)
-***which.max(a)给出az中最大值下标
+***which.max(a)给出a中最大值下标
 ***which（a==2）
 ***which(a>5)
 ***输出a[which(a>2)]
@@ -53,3 +53,49 @@ a=c(2,3,4,5,6,7,8,9)
 ***solva(a)求逆矩阵
 ***solva(a,b)求方程组ax=b
 ***a.e=eigen(a,symmetric=T)求特征值
+
+	（5）向量和数组转换
+%%%_x=c(1:6)
+%%%_is.vector(x)检验是不是数组
+%%%_is.arraay(x)检验是不是向量
+%%%_is.martix(x)检验是不是矩阵
+%%%_dim(x)<-c(2,3)用定dim()函数将向量转换成数组
+
+	（6）数据框
+矩阵和数据框的区别，矩阵中每一个数值都是数值的，数据框中可以是不同的类型。
+***x1=c(10,13,45,26,23,12,24,78,23,43,31,56)
+***x2=c(20,65,32,32,27,87,60,13,42,51,77,35)
+***x=data.frame(x1,x2)
+***x=data.frame('重量'=x1,‘运费’=x2)
+***plot(x)
+
+	（7）读取文本
+***x<-read.table("c:\\abc.txt")读取文件
+***y<-read.table("clipboard",head=F)通过获取复制的方式对Excel的数据进行获取。
+***w<-read.table("test.prn",head=F)读取prn格式的excel文件。
+***w<-read.csv("test.csv",head=F)
+		安装RODBC包，在通过OBDC读取excel文件
+***library(RODBC)读取安装包
+***Z<-odbcConnectExcel("test.xls")
+***w<-sqlFetch(z,"sheet1")
+
+		(8)for语句
+***for(i  in 1:59){a[i]=i*2+3}
+
+		(9)while(a[i],121)
+***a[1]=5
+***i=1
+***while(a[i],121){i=i+1;a[i]=a[i-1]+2}
+
+		(10)source()和print()函数
+***source()读取脚本
+***print()输出文件
+
+		(11)分布函数
+***正态分布rnorm()
+***泊松分布rpois()
+***指数分布rexp()
+***gramma分布rgramma()	
+***均匀分布runif()
+***二项分布rbinom()
+***几何分布	rgeom()
