@@ -6,6 +6,16 @@
 
 *修改工作目录setwd()
 
-*保存数据 write.table(对象,file="位置\\mark.txt"，col.names=F,row.names=F,sep=" ")
-	
+*保存数据
+	write.table(x1,file="位置\\mark.txt"，col.names=F,row.names=F,sep=" ")
 
+#读取文本文件
+***x<-read.table("c:\\abc.txt")读取文件
+***y<-read.table("clipboard",head=F)通过获取复制的方式对Excel的数据进行获取。
+***w<-read.table("test.prn",head=F)读取prn格式的excel文件。
+***w<-read.csv("test.csv",head=F)
+
+#安装RODBC包，在通过OBDC读取excel文件
+***library(RODBC)读取安装包
+***Z<-odbcConnectExcel("test.xls")
+***w<-sqlFetch(z,"sheet1")
