@@ -25,6 +25,7 @@
 
 （9）茎叶图
 ***stem(x$x1)
+***stem(x$x1,scale=2)
 
 （10）Q-Q图
 判断是不是正态分布qqnorm(x1)
