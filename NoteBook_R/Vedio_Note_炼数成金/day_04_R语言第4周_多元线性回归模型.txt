@@ -31,7 +31,7 @@ x=iris[which(iris$Species=="setosa"),1:4]
 plot(x)#画出散点图
 
 (8)瑞士数据集
-s=lm(Fertility~.),data=swiss)#lm()回归函数，Fertility因变量，~关系，"."除因变量外所有变量
+s=lm(Fertility~.,data=swiss)#lm()回归函数，Fertility因变量，~关系，"."除因变量外所有变量
 print(s)
 summary(s)
 
@@ -49,5 +49,13 @@ summary(s)
 ***AIC=n ln(RRS/n)+2p
 ***n为变量总个数，p为选出变量的个数，AIC越小越好
 
-17分50秒
+(11)step()函数
+sl=step(s,direction="backward")#s表示线性回归模型，direction="forward"向前引入法/"backward"向后剔除法/"both"逐步筛选法
+以瑞士数据集为例子
+s=lm(Fertility~.,data=swiss)#最初的线性回归方程
+优化线性回归方程
+sl=step(s,direction="backward")
 
+(12)多元线性回归（手动调整变量）
+add1()增加一个变量
+drop1()去除一个变量
