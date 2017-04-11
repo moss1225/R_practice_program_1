@@ -20,18 +20,34 @@ deviance(a)
 residuals(a)
 
 (7)多元线性回归
-例子：iris数据集，研究花瓣与花萼的长度、宽度之间的联系
-准备数据：
-x=iris[which(iris$Species=="setosa"),1:4]
 预测
 new<-data.frame(x1=80,x2=40)
 lm.pred<-predict(lm.sol,new,interval="prediction",level=0.95)#lm.sol公式
-lm.pred
+lm.pred#输出lm.pred
 
+例子：iris数据集，研究花瓣与花萼的长度、宽度之间的联系
+准备数据：
+x=iris[which(iris$Species=="setosa"),1:4]
+plot(x)#画出散点图
 
+(8)瑞士数据集
+s=lm(Fertility~.),data=swiss)#lm()回归函数，Fertility因变量，~关系，"."除因变量外所有变量
+print(s)
+summary(s)
 
+(9)逐步回归
+1.向前引入法：从一元回归开始，逐步增加变量，使指数值达到最优
+2.向后剔除法：从全变量方程开始，逐步删去某个变量，使指标值达到最优为止
+3.逐步筛选法：综合上述两种方式
 
+(10)多元线性回归的核心问题
+1.RSS(残差平方和)与相关系数平方选择法：遍历所有可能的组合，选出RSS最小，R^2最大的模型
+***summary(a)
+***Residual standard error的值越小模型越准确
+***Multiple R-squard的值越大模型越准确
+2.AIC(akaike information criterion)准则与BIC(bayesian information criterion)准则
+***AIC=n ln(RRS/n)+2p
+***n为变量总个数，p为选出变量的个数，AIC越小越好
 
-
-
+17分50秒
 
