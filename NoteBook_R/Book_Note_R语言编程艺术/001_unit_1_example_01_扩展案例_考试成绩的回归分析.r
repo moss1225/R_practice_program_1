@@ -1,0 +1,16 @@
+#ExamData=read.table("notepad.txt",header=F)
+	#↑引入文本中的数据
+examdata=c(2.0,3.3,4.0,3.3,2.0,3.7,4.0,4.3,4.0,2.3,0.0,3.3,2.3,1.0,3.3,3.3,3.7,4.0)
+	#↑引入成绩数据
+ExamData=matrix(examdata,nrow=6,byrow=T)
+	#↑将数据转换成数组，数据有三列，分别表示期中成绩、期末成绩、平时测试成绩
+lma<-lm(ExamData[,2]~ExamData[,1])
+	#↑期末考试作为因变量的关于期中成绩作为自变脸的一元线性线性回归模型
+attributes(lma)
+	#↑返回保存在来了中的变量
+summary(lma)
+	#↑返回回归信息摘要
+plot(ExamData[,1],ExamData[,2])
+	#↑画散点图期中-期末
+lines(ExamData[,1],lma[1]$coefficients[1]+lma[1]$coefficients[2]*ExamData[,1])
+	#↑绘制回归曲线，lma[1]$coefficients[1]截距，lma[1]$coefficients[2]斜率

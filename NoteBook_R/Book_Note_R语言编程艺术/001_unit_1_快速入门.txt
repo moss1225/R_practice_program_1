@@ -1,0 +1,37 @@
+1.source("z.r")引入R文件
+
+2.储存pdf图片
+***pdf("1.pdf")#开始绘制指令
+***hist(rnorm(100))#具体绘制函数
+***dev.off()#结束绘制并保存
+
+3.简单函数案例
+	oddcount<-function(x){
+	k<-0
+	for(n in x){
+		if(n%%2==1)k=k+1
+		}
+	return (k)
+	}
+#计算数据中包含奇数的个数
+	p=c(1,2,3,4,21,33)
+	oddcount(p)
+
+4.作用域函数
+	f<-function(x)return(x+y)
+	y<-3
+	f(5)
+
+5.默认参数
+	g<-function(x,y=2,z=T){...}
+	
+6.mode()查看字符串类型
+
+7.paste()字符串连接函数
+strsplit(x," ")分隔函数
+
+8.example()/help()帮助函数
+
+9.summary()泛型函数用于打印详细内容
+
+10.q()退出函数
