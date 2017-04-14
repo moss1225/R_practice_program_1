@@ -16,3 +16,4 @@ FindRuns<-function(x,k){
 }
 
 FindRuns(run_data,2)
+	#↑应用数据
