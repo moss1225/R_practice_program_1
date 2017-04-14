@@ -19,3 +19,9 @@
 ***library(RODBC)读取安装包
 ***Z<-odbcConnectExcel("test.xls")
 ***w<-sqlFetch(z,"sheet1")
+
+#常用的数据格式
+1.向量：
+2.矩阵：
+3.数据框：
+4.因子和表：
