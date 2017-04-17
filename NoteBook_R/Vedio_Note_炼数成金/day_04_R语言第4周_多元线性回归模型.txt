@@ -41,10 +41,10 @@ summary(s)
 3.逐步筛选法：综合上述两种方式
 
 (10)多元线性回归的核心问题
-1.RSS(残差平方和)与相关系数平方选择法：遍历所有可能的组合，选出RSS最小，R^2最大的模型
+1.RSS(残差平方和/残差标准差)与相关系数平方选择法：遍历所有可能的组合，选出RSS最小，R^2最大的模型
 ***summary(a)
 ***Residual standard error的值越小模型越准确
-***Multiple R-squard的值越大模型越准确
+***Multiple R-squard(相关系数平方R方)的值越大模型越准确
 2.AIC(akaike information criterion)准则与BIC(bayesian information criterion)准则
 ***AIC=n ln(RRS/n)+2p
 ***n为变量总个数，p为选出变量的个数，AIC越小越好
