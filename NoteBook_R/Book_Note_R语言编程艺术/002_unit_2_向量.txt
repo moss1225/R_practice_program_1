@@ -27,4 +27,23 @@ x=c(1:10)
 any(x>8)
 all(x>8)
 
-(8)
+(8)sapply()调用函数
+***x<-1:8
+***z12<-function(z){(z,z^2)}
+***sapply(x,z12)
+
+(9)NA缺失值/NULL不存在的值
+***mean(x,na.rm=T)#na.rm=T表示移除缺失值
+
+(10)NULL的一个用法是在循环中创建向量，其中每次迭代偶在这个向量上增加一个元素。
+***z<-NULL
+***for(i in 1:10)if(i%%2 == 0)z<-c(z,i)
+***z<-NA
+***for(i in 1:10)if(i%%2 == 0)z<-c(z,i)
+
+(11)subset()筛选函数
+***x<-c(6,1:3,NA,12)
+***subset(x,x>5)
+
+(12)ifelse函数
+if(x%%2==0,5,12)
