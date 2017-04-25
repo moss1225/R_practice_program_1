@@ -35,5 +35,13 @@ P283
 
 （8）广义线性模型
 1.符合logic回归模型的曲线特征
-2.广义线性回归模型建模函数：qlm()
+2.广义线性回归模型建模函数：glm()
 ***fitted.model<-qlm(formula,family=family.generator,data=data.frame)
+
+(9)非线性模型
+1.lm.pow<-lm(y~log(x))#对数法
+2.lm.pow<-lm(log(y)~x)#指数法
+3.lm.pow<-lm(log(y)~log(x))#对数关系
+画图：lines(x,exp(fitted(lm.pow)))
+#fitted是拟合值，predict是预测值。
+#模型是基于给定样本的值建立的，在这些给定样本上做预测就是拟合。在新样本上做预测就是预测。

@@ -32,7 +32,7 @@ y.rst<-rstandard(lm.sol)
 y.fit<-predict(lm.sol)
 	#¡üÔ¤²âÖµ
 plot(y.rst~y.fit)
-	#¡ü»æÖÆ²Ğ²î-¹ØÏµÍ¼
+	#¡ü»æÖÆ²Ğ²î-Ô¤²âÖµ¹ØÏµÍ¼
 abline(0.1,0.5)
 abline(-0.1,-0.5)
 	#¡ü¸¨ÖúÇ÷ÊÆÏß
