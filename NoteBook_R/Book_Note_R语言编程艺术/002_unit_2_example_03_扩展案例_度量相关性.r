@@ -12,10 +12,13 @@ findud<-function(v){
 
 udcorr<-function(x,y){
 	ud<-lapply(list(x,y),findud)
-	#分别将x,y带入findud函数，分别返回到ud[[1]]和ud[[2]]中
+	#↑分别将x,y带入findud函数，分别返回到ud[[1]]和ud[[2]]中
 	return(mean(ud[[1]]==ud[[2]]))
 }
-
+udcorrLESS<-function(x,y){
+	#↑精简udcorr函数
+	mean(sign(diff(x))==sign(diff(y)))
+}
 x=c(5,12,13,3,6,0,1,15,16,8,88)
 y=c(4,2,3,23,6,10,11,12,6,3,2)
 
