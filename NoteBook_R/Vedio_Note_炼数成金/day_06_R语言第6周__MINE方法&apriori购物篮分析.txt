@@ -19,3 +19,39 @@ source("MINE.r")
 MINE("example.csv","all.pairs")
 
 The library exposes two functions: MINE, and rMINE. The difference between them is that MINE takes as input a path to a csv file to be analyzed, while rMINE takes as input an R matrix containing the data to be analyzed. Both functions take parameters identical to those in the Java version. For additional information, see the comments in MINE.r.
+
+4.购物篮（剪枝法）略。P135
+项集：项（商品）的集合
+k-项集：k个项组成的集合
+频繁项集：满足最小支持度的项集，频繁k-项集一般记为Lk
+强关联规则：满足最小支持度阈值和最小置信度阈值的规则
+
+***安装arules包进行购物篮分析
+***内置Groceries数据集
+↓    
+library(arules)#装载包
+data(Groceries)#调用数据文件
+inspect(Groceries)#观看数据集里的数据
+rules=apriori(Groceries,parameter=list(support=0.01,confidence=0.5))
+#↑利用aprior函数提取关联规则
+***需要筛选关联规则
+x=subset(rules,subset=rhs%in%"whole milk"&lift>=1.2)
+#↑求所需的关联规则子集
+inspect(sort(x,by="support")[1:5])
+#↑根据支持度求得的关联规则子集排序并查查看
+***其中lift=P(L,R)/(P(L)P(R))是一个类似相关系数的指标。left=1时表示L和R独立。这个数越大，表明L和R存在在一个购物篮中不是偶然现象。
+↑
+
+
+
+
+
+
+
+
+
+
+
+
+
+
