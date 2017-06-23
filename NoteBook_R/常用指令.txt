@@ -20,6 +20,12 @@
 ***Z<-odbcConnectExcel("test.xls")
 ***w<-sqlFetch(z,"sheet1")
 
+#写入字符串
+***writeLines(data, "C:\\Users\\Administrator\\git\\R_practice_program_1\\NoteBook_R\\Book_Note_R语言编程艺术\\data_4_1_change.txt")
+
+#转换成字符串类型
+***data=as.characte(data)
+
 #常用的数据格式
 1.向量：
 2.矩阵：

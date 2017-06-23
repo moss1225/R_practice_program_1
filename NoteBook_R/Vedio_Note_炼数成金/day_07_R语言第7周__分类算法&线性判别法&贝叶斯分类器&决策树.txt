@@ -34,7 +34,6 @@ ld
 #↑ #Prior probabilities of groups:先验概率，表示x1，x2在总体里的比例
 #↑ #Group means：计算两个因变量的平均值
 #↑ #Coefficients of linear discriminants：线性判别系数，求出x1，x2的系数
-↑
 
 6、分类判别
 z=predict(ld)

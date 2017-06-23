@@ -17,3 +17,5 @@ x[x[,2]>=3,]
 (6)as.martix(x1)将向量转换成矩阵，防止意外降维。
 
 (7)矩阵行和列命名 colnames(x1)=c(name1,name2)和rownames()
+
+(8)高维数组X=array(data=c(data1,data2),dim(3,2,2))
