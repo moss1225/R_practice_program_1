@@ -4,11 +4,11 @@
 #这个函数在语境分析中很有用。
 #建设输入文本为textconccord.txt的内容如下：
 #使用列表相对于矩阵，不用确定列数，节省空间。
-# Author: MOSS
+# Author: Moss
 data<-readLines("C:\\Users\\Administrator\\git\\R_practice_program_1\\NoteBook_R\\Book_Note_R语言编程艺术\\data_4_1.txt")
 #↑按行读取信息
 data<-gsub(",|\\.|!|?","",data)
-data=as.characte(data)
+data=as.character(data)
 #↑用正则表达式去除句子中的标点
  writeLines(data, "C:\\Users\\Administrator\\git\\R_practice_program_1\\NoteBook_R\\Book_Note_R语言编程艺术\\data_4_1_change.txt")
 #↑写入字符串到文件
