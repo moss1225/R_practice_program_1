@@ -41,12 +41,15 @@ g<-c("M","F","F","I","M","M","F")
 lapply(c("M","F","I"),function(gender),which(g==gender))
 #↑函数略写，取不同性别的鲍鱼，并分别按照性别进行列表形式的是索引返回。
 	
-
-
-
-
-
-
+(9)递归型列表
+***程序调用自身的编程技巧称为递归（ recursion）。
+b<-list(u = 5 , v = 12)
+c<-list(w = 13)
+a<-list(b , c)
+a[[1]]$1
+***用recursive参数可以将列表压平
+a<-c( list(b , c) )                         #递归
+a<-c( list(b , c) ,  recursive = T)   #非递归
 
 
 
