@@ -34,5 +34,7 @@
 	rbind(d,list("leonard","12"))
 	
 (6)使用apply()函数
-	apply(examsquiz , 1 , mean)	
+	apply(examsquiz , 1 , mean)	1表示按行
+	
+(7)lapply和sapply函数
 	
