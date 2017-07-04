@@ -22,7 +22,7 @@ findwords<-function(tf){
 		#↑将字符串赋值到wtd
 		wl[[wrd]]<-c(wl[[wrd]],i)
 		#↑字符串wl[[wrd]]，其中wrd为索引
-		#↑增加长度，用于记录该字母新的位置
+		#↑索引wrd相同，添加位置i。索引wrd不同，增加索引，添加位置，
 	}
 	return(wl)
 }

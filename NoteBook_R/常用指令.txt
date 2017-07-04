@@ -28,6 +28,11 @@
 
 #常用的数据格式
 1.向量：
+	gender=c("M","M","F","M","F","F")
 2.矩阵：
-3.数据框：
-4.因子和表：
+	y<-matrix(c(1,2,3,4),nrow=2,ncol=2,byrow=T)
+3.列表
+	j<-list(name="Joe",salary=55000,union=T)
+4.数据框：
+	d<-data.frame(list(gender=c("M","M","F","M","F","F") , age=c(47 , 59 , 21 , 32 , 33 , 24 ) , income=c(55000 , 88000 , 32450 , 76500 , 123000 , 45650)))
+5.因子和表：
