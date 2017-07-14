@@ -8,7 +8,12 @@
 
 *保存数据
 	write.table(x1,file="位置\\mark.txt"，col.names=F,row.names=F,sep=" ")
-
+	
+*查看目录中包含的文件
+	list.files()
+*选择文件地址并返回文件地址
+	choose.dir()
+	
 #读取文本文件
 ***x<-read.table("c:\\abc.txt")读取文件
 ***y<-read.table("clipboard",head=F)通过获取复制的方式对Excel的数据进行获取。
@@ -36,3 +41,4 @@
 4.数据框：
 	d<-data.frame(list(gender=c("M","M","F","M","F","F") , age=c(47 , 59 , 21 , 32 , 33 , 24 ) , income=c(55000 , 88000 , 32450 , 76500 , 123000 , 45650)))
 5.因子和表：
+table( d<-data.frame(list(gender=c("M","M","F","M","F","F") , race=c("W","W","A","O","B","B" ) , pol=c("L","L","C","L","L","C"))))

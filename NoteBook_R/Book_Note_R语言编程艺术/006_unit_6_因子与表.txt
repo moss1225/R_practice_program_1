@@ -19,6 +19,7 @@ xf的核心不是(5,12,13,12)而是(1,2,3,2)
 后者表明数据是由水平1的值、水平2的值、水平3的值、水平2的值的构成
 
 3、tapple函数
+*** table类型对象由一个数组构成，该数组的元素就是标的单元格频数
 我们假设有一个关于选民的向量x，以及一个引子f，表示这些选民的一些非数值特征，
 例如党派(民主党、共和党、无党派)。我们希望找到x中每个党派的平均年龄。如果函
 数中的一部分是向量，则需要用函数as.factor()强制将其转换成因子。
@@ -66,7 +67,7 @@ by(aba , aba$gender , function(m) lm( m[ , 2] ~ m[ , 3]))
 u<-c(22,8,33,6,3,8,29,-2)
 fl<-list(c(5,12,13,12,13,5,13),c("a","bc","a","a","bc","a","a"))
 table(fl)
-tapply(ul , fl , length)
+tapply(u , fl , length)
 输出：
          a    bc
   5     2    NA
@@ -74,3 +75,16 @@ tapply(ul , fl , length)
 13     2    1
 将u划分为6个子向量，然后把函数length()应用在每个子向量
 函数table()创建表，并将list形成表中的NA值转换0。
+求长度的预算不依赖u中的具体数值
+
+三维数据通过二维形式
+ d<-data.frame(list(gender=c("M","M","F","M","F","F") , race=c("W","W","A","O","B","B" ) , pol=c("L","L","C","L","L","C")))
+table(d)
+
+7、表中有关矩阵和类似数组的操作
+cttable<-table(data)
+class(cttable)                      #检测数据类型
+cttable[1,1]                        #显示它的[1,1]元素
+cttable[1, ]                        #显示它的第一行
+apply(cttable , 1 ,  sum)     #按行进行求和
+dimnames(cttable)            #获得维度的名称和水平值
