@@ -1,0 +1,50 @@
+1、for循环
+z <- c( 1:10 )
+for ( k in z ){ print ( k ) }
+
+2、while循环
+z <-1
+while( z <= 10 ){ i = i + 4 }
+
+3、repeat循环 和 break中断
+repeat{
+	i < i + 4
+	if ( i > 10 ){ break }
+}
+
+4、next语句
+next语句跳过本次循环的剩余部分，直接进入循环的下一次迭代。
+i  <- 1
+while(i <= 100){
+i <- i+1
+if( i %% 4 != 0 ) next
+} # 输出4的倍数
+
+5、对非向量集合的循环
+R语言不支持直接对非向量集合的循环，但是有一些间接的方法可以做到这些：
+（1）使用lapply()函数
+data <- list( a = c ( 1 , 2 , 3 , 4 ) , b = c (2 , 3 ,4 , 5 ) )
+lapply ( data , mean )
+（2）使用get()函数
+u <- matrix(c(1,1,2,2,3,4) , byrow = T , ncol =2)
+v <- matrix(c(8 , 15 , 12 , 10 , 20 , 2) , byrow = T , ncol =2)
+for( m in c( u , v )){
+	z <- get( m )
+	print( lm( z[ , 2 ] ~ z[ , 1] ) )
+	}
+}
+
+6、if-else结构
+if( r == 4){
+	x=1
+}else{
+	x=3
+	y=4
+}
+
+7、返回值 return
+8、body(函数名)、page(函数名)打印函数信息
+
+9、作用域_顶层环境
+environment(参数)函数，返回对象所在环境
+ls()函数，调用该函数，返回该函数下所有对象
