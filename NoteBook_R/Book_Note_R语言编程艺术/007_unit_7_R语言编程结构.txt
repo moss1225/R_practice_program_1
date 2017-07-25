@@ -48,3 +48,41 @@ if( r == 4){
 9、作用域_顶层环境
 environment(参数)函数，返回对象所在环境
 ls()函数，调用该函数，返回该函数下所有对象
+
+10、关于ls()的进一步讨论
+在函数中调用不带参数的ls()会返回当前的局部变量（包括参数）。
+使用envir参数，ls()会输出函数调用链中任何一个框架的局部变量名。
+f<-function(){
+	d <- 8
+	return(h(d,y))
+}
+h<-function( dee , yyy ){
+	print(ls())
+	print(ls(envir=parent.frame(n=1)))
+	return(dee+(w+yyy))
+}
+调用及返回：
+f(2)
+[1] "dee" "yyy"
+[1]"de"  "y"
+[1]112
+说明：
+在parent.frame()中，参数n设定了要沿函数调用链向上几个框架。
+在这里，当前正在执行h()，而h()是被f()调用的，所以n=1指的就是f()的框架。
+于是就得到它的局部变量。
+
+11、函数(几乎)没有副作用
+函数式编程哲学的另外一个特征是，函数不会修改非局部变量。
+w <- 12
+f<-function(y){
+	d<-8
+	w <- w+1
+	y <- y-2
+	print(w)
+	h <- function(){
+		return (d*(w+y))
+	}
+	return ( h() )
+}
+t=4
+f(t)
