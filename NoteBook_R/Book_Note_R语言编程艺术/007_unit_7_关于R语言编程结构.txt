@@ -113,3 +113,21 @@ two<-function(u){
 	assign("u" , u + 2 , pos = .GlobalEnv)
 	z<-2*z
 }
+
+13、闭包：包含了函数的参数、函数体、以及调用时的环境。
+闭包包含了一个可创建局部变量的函数，并创建另一个函数可以访问该变量。
+counter <- function(){
+	ctr <- 0
+	f <- function(){
+		ctr <<- ctr + 1
+		cat("this count currently has value" , ctr , "\n")
+	}
+	return (f)
+	# 将函数和环境变量当作参数返回
+}
+c1 <- counter()
+c1 <- counter()
+c2 <- counter()
+c2 <- counter()
+c2 <- counter()
+c1 <- counter()
