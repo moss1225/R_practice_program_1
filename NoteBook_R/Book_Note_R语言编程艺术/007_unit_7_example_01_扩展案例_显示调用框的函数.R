@@ -17,6 +17,7 @@ showframe <- function(upn){
 		#↑函数get()用法：它的功能非常简单：输入对象的名称，它就会输出该对象。
 		if(!is.function(vrg)){
 			cat(vr,":\n",sep="")
+			#↑函数cat()的作用，与paste()类似，此处为了输出标题，类似“aa:”
 			print(vrg)
 		}
 	}

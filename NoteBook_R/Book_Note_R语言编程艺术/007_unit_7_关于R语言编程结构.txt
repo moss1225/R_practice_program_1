@@ -86,3 +86,30 @@ f<-function(y){
 }
 t=4
 f(t)
+
+12、向上级层次进行写操作
+对当前层次上的上级层次中任意变量进行写操作，
+你可以在当前层此使用超赋值运算符<<- 
+或者函数assin()。
+（1）超赋值运算符
+u<-2
+f<-function(){
+	u<<-3
+}
+u ; f() ; u
+
+（2）超赋值运算符，从上级层次中逐层寻找，修改一次
+f<-function(){ 
+inc<-function(){x << x + 1}
+x=1
+inc()
+return(x)
+ }
+f()    (result : 4)
+x      (not found)
+
+（3）用assign()函数对非局部变量进行写操作
+two<-function(u){
+	assign("u" , u + 2 , pos = .GlobalEnv)
+	z<-2*z
+}
