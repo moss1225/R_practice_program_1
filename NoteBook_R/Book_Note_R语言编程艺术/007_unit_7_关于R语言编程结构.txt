@@ -131,3 +131,23 @@ c2 <- counter()
 c2 <- counter()
 c2 <- counter()
 c1 <- counter()
+
+14、递归
+	递归（recursive）函数会调用自己本身。
+	通过写一个递归函数f()来解决X类型问题：
+	1.将X类型的原始问题划分为一个或更小的X类型问题。
+	2.在f()中，对每个较小问题调用f()函数。
+	3.然后再在f()中，将(2)中所有结果整合起来解决这个原始问题。
+	
+15、Quicksort的具体实践	
+	Quicksort这种算法用来将数字向量从小到大排列。
+	qs <- function(x){
+			if(length(x) <= 1 ) return(x)
+			pivot<-x[1]
+			therest<-[-1]
+			sv1 <-therest[ therest < pivot ]
+			sv2 <-therest[ therest >= pivot ]
+			sv1 <- qs(sv1)
+			sv2 <- qs(sv2)
+			return(c(sv1 , pivot , sv2))
+	}

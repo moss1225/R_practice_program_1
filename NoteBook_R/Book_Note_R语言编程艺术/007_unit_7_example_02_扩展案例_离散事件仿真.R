@@ -93,9 +93,11 @@ schedevnt <- function(evnttm , evntty , appin = NULL){
 	if(is.null(sim$evnts)){
 		sim$evnts <<- newevnt
 		print("schedevnt if 确认 sim 为空 95")
+		print(sim$evnts)
 		return()
 	}
 	#↓# otherwise , find insertion point
+	print("调用 shedevnt 中的 binsearch")
 	inspt <- binsearch((sim$evnts)$evnttime,evnttm)
 	### now "insert , " by reconstructing the data frame ; we find what
 	### portion of the current martrix should come before the new event and
@@ -130,12 +132,27 @@ binsearch <- function(x , y){
 # start to process next event (second half done by appliction
 # programmer via call to reactevnt())
 getnextevnt <-function(){
-	print("测试 getnextevnt 132")
+	print("测试 getnextevnt 135")
 	# 从事件列表中取出一个数据
 	head <- sim$evnts[1, ]
+	print("输出sim$evnts 138")
+	print(sim)
+	print(sim$evnts)
+	print(head)
+	print(nrow(sim$evnts))
+	if(is.null(sim$evnts)){
+		print("队列为空 143")
+	} 
 	#delete head
 	if(nrow(sim$evnts) == 1){
+		print("执行 sim$evnts <<- NULL")
 		sim$evnts <<- NULL
+		# 自己添加的arrvtime和schedevnt，尝试添加事件
+		#arrvtime <- rexp(1 , mm1glbls$arrvrate)
+		#schedevnt(arrvtime , "arrv" , list(arrvtime=arrvtime))
+		#arrvtime <- rexp(1 , mm1glbls$arrvrate)
+		#schedevnt(arrvtime , "arrv" , list(arrvtime=arrvtime))
+		#head <- sim$evnts[1, ]
 	}else sim$evnts <<- sim$evnts[-1, ]
 	return(head)
 }
@@ -156,6 +173,7 @@ dosim <- function(initglbls , reactevnt , prntrslts , maxsimtime , apppars=NULL 
 	print("测试 dosim  150")
 	# 初始化函数dosim()
 	# 初始化数据sim，sim 应该表示项目列表。
+	# dosim中的while循环为主循环
 	sim <<- list()
 	sim$currtime <<- 0.0
 	sim$evnts<<- NULL
@@ -167,8 +185,13 @@ dosim <- function(initglbls , reactevnt , prntrslts , maxsimtime , apppars=NULL 
 	print("数值返回成功166")
 	while(sim$currtime < maxsimtime){
 		# 控制调用次数 sim$currtime为工作总时间 ，maxsimtime为规定最大时间
+		print("返回while循环")
+		print("sim$currtime1")
+		print(sim$currtime)
 		head<-getnextevnt()
 		sim$currtime <<- head$evnttime  #upgrade current simulated time
+		print("sim$currtime2")
+		print(sim$currtime)
 		reactevnt(head) # process this event
 		if(dbg)print(sim)
 	}
@@ -222,6 +245,7 @@ mm1reactevnt <- function(head){
 			print(srvdonetime)	
 			print("测试 mm1reactevnt if 1 working 200")
 			schedevnt(srvdonetime , "srvdone" , list(arrvtime=head$arrvtime))
+			print(sim)
 			print("测试 mm1reactevnt if 1 end 202")
 		}else{
 			print("function mm1reactevnt else 2")
@@ -233,10 +257,14 @@ mm1reactevnt <- function(head){
 	}else{ #service done
 		# process job that just finished
 		# do accounting
+		print("mm1reactevnt 处理 service done")
 		mm1glbls$njobsdone <<- mm1glbls$njobsdone+1
 		mm1glbls$totwait <<- mm1glbls$totwait + mm1glbls$currtime - head$arrvate
 		# remove from queue
 		mm1glbls$srvq<<-mm1glbls$srvq[-1]
+		print("输出mm1glbls$srvq")
+		print(mm1glbls$srvq)
+		print(length(mm1glbls$srvq))
 		#more still in queue?
 		if(length(mm1glbls$srvq)>0){
 			#schedule new service
