@@ -1,10 +1,10 @@
-#          树形数据结构在计算机科学和统计学中非常普遍的。例如，在R中，用于回归和分类
-# 的递归分块方法库-repart，就非常受欢迎。很明显，树在系谱中有所应用，更一般的方法，
-# 图分为了社交网络分析基础。
+#          �������ݽṹ�ڼ������ѧ��ͳ��ѧ�зǳ��ձ�ġ����磬��R�У����ڻع�ͷ���
+# �ĵݹ�ֿ鷽����-repart���ͷǳ��ܻ�ӭ�������ԣ�����ϵ��������Ӧ�ã���һ��ķ�����
+# ͼ��Ϊ���罻�������������
 
-#         然而，R中的树结构也有些实际问题，它们中很多是由于R语言中没有指针类型的引用所造
-# 成的。事实上，因为这个原因，也为了获得更好的运算性能，一个更好的选择通常是用C语言编
-# 写核心代码。
+#         Ȼ����R�е����ṹҲ��Щʵ�����⣬�����кܶ�������R������û��ָ�����͵���������
+# �ɵġ���ʵ�ϣ���Ϊ���ԭ��ҲΪ�˻�ø��õ��������ܣ�һ�����õ�ѡ��ͨ������C���Ա�
+# д���Ĵ��롣
 
 # routines to create trees and insert items into them are included
 # below ; a delete routine is left to the reader as an exercise.
