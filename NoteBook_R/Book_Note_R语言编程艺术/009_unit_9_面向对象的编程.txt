@@ -1,0 +1,30 @@
+1、基本概念
+面向对象object-oriented programming
+R中所有东西都是对象
+A、封装（encapsulation）：即把独立但相关的数据项目打包为一个类的实例。
+	封装可帮助你跟踪相关的变量，提高清晰度。
+B、多态（polymorphic）：这意味着相同的函数使用不同类的对象时可以调用不同的操作。
+	例如，使用print()调用特定类的对象会调用适合此类的打印功能，多态促进代码可重用性。
+C、继承（inheritance）：即允许把一个给定的类的性质自动赋予为其下属的更特殊的类。
+
+2、S3类介绍
+		 R中原始类结构，即S3类，现在仍然在R的使用中占据主导地位。事实上，大多数R中
+内置的类都是S3类的。
+
+3、编写S3类
+类属性通过attr()或者class()函数手动设置，然后在定义各种泛型函数的实现方法。
+j <- list (name="Joe" , salary=55000 , union=T)
+class(j) <- "employee" # 设置类属性
+attributes(j) # 打印j中元素
+print.employee <- function(wrkr){ #创建employee类的输出方式
+	cat(wrkr$name , "\n")
+	cat("salary" , wrkr$salary , "\n")
+	cat("union member" , wrkr.union)
+}
+j  # 默认调用类的输出方法
+
+4、使用继承
+       集成的思想是在已有类的基础上创建新的类。例如在前文雇员数据的例子中，可以创
+建针对小时工的新类"hrlyemployee"，作为"employee"的子类。
+k <- list(name="kate" , salary =68000 , union=F , hrsthismonth=2)
+class(k) <- c("hrlyemployee" , "employee")
