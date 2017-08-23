@@ -23,9 +23,11 @@ ut <- function(inmat){
 	rtrn$ix <- sum1toi(0:(n-1))+1
 	for(i in 1:n){
 		# store column i
-		ixi <- rtrn$ix[i]
-		rtrn$mat[ixi:(ixi+i-1)]<-inmat[1:i , i]
+		 ixi <- rtrn$ix[i]
+		 rtrn$mat[ixi:(ixi+i-1)]<-inmat[1:i , i]
 	}
+	# rtrn$mat <- inmat[row(inmat) <= col(inmat)]
+	# 用一行代码，代替上述for循环，此外默认输出是按列。
 	return(rtrn)
 }
 
