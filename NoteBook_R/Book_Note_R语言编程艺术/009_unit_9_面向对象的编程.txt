@@ -28,3 +28,60 @@ j  # 默认调用类的输出方法
 建针对小时工的新类"hrlyemployee"，作为"employee"的子类。
 k <- list(name="kate" , salary =68000 , union=F , hrsthismonth=2)
 class(k) <- c("hrlyemployee" , "employee")
+
+5、S4类
+		一些程序员认为S3类不具有面向对象固有的安全性。例如，在我们之前的employee数
+据库的例子中，"employee"类有三个字段：name、salary和union。下面是一些可能的错误：
+1.忘记键入union的状态、2.把union错拼成onion、3.创建了其他类的对象，但是不小心将类
+属性设定为“employee”
+	*定义类 setclass()
+	*创建对象 new()
+	* 引用成员变量 @
+	* 实现泛型函数f() setMethod()
+	* 声明泛型函数 setGeneric()
+	
+6、编写S4类
+setClass("employee",
+	representation(
+		name="character",
+		salary="numeric",
+		union="logical")
+		)
+创建实例
+joe <- new("employee" , name="Joe" , salary=55000 , union=T)		
+查询数值
+joe@salary # 方法1
+slot(joe , "salary") # 方法2
+
+7、在S4类上实现泛型函数
+使用setMethod创建泛型函数show()
+setMethod("show" , "employee",
+	function(object){
+		inorout <- ifelse(object$union , "is" , "is not")
+		cat(object@name , "has a salary of ", object@salary ,
+		"and" , inorant ,"in thehe union" , "\n")
+	}
+)
+调用函数
+show( joe )
+
+8、对象的管理
+用ls()函数列出所有对象
+用rm()函数删除所有特定对象
+用browerEnv()函数在浏览器显示所有全局变量
+用save()可以吧这些对象写入硬盘，用load()回复
+	z<- rnorm(100000) ; hz <- hist(z) ; save(hz , "hzfile") ; ls() #查看所有对象;
+	rm(hz) #删除对象;
+	ls(); #查看所有对象;
+	load("hzfile") # 恢复相应对象
+	ls(); #查看所有对象;
+	
+9、查看对象内部结构
+	class() , mode(),
+	names() , attributes()
+	unclass() , str()
+	edit()
+	
+10、exists()函数
+exists()函数根据参数是否存在放回TRUE或者FLASE。要注意把参数放在引号里面。
+exists("acc")
