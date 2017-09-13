@@ -1,0 +1,66 @@
+1、字符串操作函数概述
+* grep(pattern , x)语句在字符串向量里搜索给定字符串pattern
+		grep("Pole" , c("Equator" , "North Polo" , "Souther Pole"))
+		运算结果：2 3
+		grep("pole" , c("Equator" , "North Polo" , "Souther Pole"))
+		运算结果：0
+		
+* nchar(x)返回字符串x长度
+		nchar("South Polo")
+		运算结果：10
+		
+* paste(...) 把若干个字符串连接起来
+		paste("North" , "Polo" , sep="")
+
+* sprintf(..)按照一定格式把若干的组件组合成字符串
+		i <<-8
+		s <<- spintf("the square of %d is %d" , i , i^2)
+		s
+		计算结果：the square of 8 is 64
+			使用%s替代字符变量
+			使用%d替代整数
+			使用%f替代浮点数
+		x="string"
+		sprintf("Substitute in multiple strings: %s %s", x, "string2")
+		计算结果： "Substitute in multiple strings: string string2"
+		
+* substr(x , start , stop) 函数返回给字符串x中制定位置范围的start：stop上的字符串
+		sutstr("Equater",3,5)
+		计算结果："uat"
+			
+* strsplite(x , splite) 函数根据x中的字符串splite吧字符串x拆分成若干字符串
+ 		strsplite("2017-7-1","-")
+ 		计算结果："2017" "7" "1"
+		
+* regexpr() regexpr(pattern , text) 在字符串text中寻找pattern，返回与pattern匹陪的第一个字符串
+	的起始字符串位置
+		regexpr("uat" , "Equator")
+		计算结果：3
+			
+* gregexpr(pattern , text)的功能与regexor()一样，不过它会寻找与pattern匹陪的全部字符串的开始位置
+		gregexpr("iss" , "Mississippi")
+		计算结果：2   5
+		
+2、正则表达式
+	正则表达式使用一种通配符	，它是用来描述一系列字符串的检录表达式，例如表达式
+	"[au]"表示的是含有字母a或u的字符串。可以这样使用：
+	grep("[au]",c("Equator" , "North Pole" , "South Pole"))	
+	计算结果：1   3
+	***
+	英文句点( . )表示任意字符，下面是例子
+	grep("o.e" ,c("Equator" , "North Pole" , "South Pole"))	
+	计算结果：2  3	 (ole中包换o.e)
+	***
+	grep("o..t" ,c("Equator" , "North Pole" , "South Pole"))	
+	计算结果：2
+	***
+	用grep()查找句点
+	grep("//." , "abc" , "de" , "f.g")
+	计算结果：3
+	用/让.脱离元字符属性，此处为 //.
+		
+3、在调试工具edtdbg中使用字符串工具
+# send command to editor
+dbgsenditcmd <- function( cmd ){
+	syscmd <- paste("vim --remote0-send" , cmd , "--servername" , vimserver , sep="")
+}		

@@ -1,0 +1,55 @@
+1、创建绘图
+1.1 plot(c(1,2,3),c(1,2,4))
+	 # 绘制点图
+
+1.2 plot(c(-3,3) , c(-1,5) , type="n" , xlab="x" , ylab="y")
+	# type="n" 的含义表示不要向图中绘制任何图形
+	
+1.3 abline()添加线条
+x <- c(1 , 2 , 3)
+y <- c(1 , 3 , 8)
+plot(x , y)
+lmot <- lm(y ~ x) # 绘制直线
+curve(x^2 , 1 , 3) # 绘制曲线
+ fit<- lm(y ~ I(x^2)) # 创建模型
+ lines(x,fitted(fit)) # 绘制拟合曲线
+abline(lmot)
+
+1.4 在保持现有图形的基础上新增一个绘图窗口
+在linux系统下，执行x11()
+在Mac系统下，执行macintosh()
+在windows系统下，执行windows()
+hist(x)
+x11()
+hist(y)
+# 分别绘制向量x和向量y的直方图，并将它们并排放置。
+
+1.5 添加点
+points(testscores$exam1 , testscores$exam3 , pch="+")
+黄色背景：par(bg = "yellow")
+参考注释：help(par)
+
+1.6 添加图例
+legend()函数用来向拥有多条区县的图中添加图例，图例可以告诉读者类似
+"绿色区县表示男性，红色区县表示女性"这样的信息。
+example(legend)
+
+1.7 添加文字：text()函数
+text(2.4 , 4 , "abc")
+
+1.8 精准定位 locator()
+locator(1) # 每当你点击一次，R都会告诉你所在点位置的精确坐标。
+hist(c(12 , 5 , 13 , 25 ,16))
+locator(1)
+
+1.9 保存照片
+recordPlot()将图形暂时保存起来
+replayPlot()恢复保存的图形
+
+2.定制图形
+2.1 改变字符大小 cex
+text(2.5 , 4 , "abc" , cex = 1.5)
+
+2.2 改变坐标轴的范围 xlim和ylim选项
+ylim=c(0 , 9000)
+plot(c(0,100) , c(0,0.03) , type="n" , xlab="score" , ylab="density")

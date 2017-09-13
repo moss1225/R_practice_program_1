@@ -57,4 +57,4 @@ options("timeout" = 1000)
 # connect to server
 con <- sockectConnection(host=host , port = port , block = TRUE , open="a+b")
 serialize(list(req="checking in") , con)
-myinfo <<- list(con = con , myid =)
+myinfo <<- list(con = con , myid =myidandnclnt[1] , nlnt=myidandnclnt[2])
