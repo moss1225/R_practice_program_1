@@ -101,6 +101,28 @@ poly <- function(x , cfs){
 	}
 }
 
+# 以下为新增代码
+plot.polyreg <- function(fits){
+	plot(fits$x , fits$y , xlab="X" , ylab="Y")
+	# plot data points as background
+	maxdg <- length(fits)-2
+	cols <- c("red" , "green" , "blue")
+	dg <- curvecount <- 1
+	while(dg < maxdg){
+		prompt <- paste(" RETURN for XV fit for degree" , dg ,  "or type degree" , "or q for quit")
+		rl <- readline(prompt)
+		# 等待读取输入框输入信息，该效果达到等待的效果。
+		dg<-if(rl == ""){dg}else{
+					if(rl != "q"){
+						as.integer(rl)}else{
+						break}}
+		lines(fits$x , fits[[dg]]$fitted.values , col=cols[curvecount%%3 +1])
+		dg=dg+1
+		curvecount <- curvecount+1
+	}
+}
+
+
 n <- 60
 x <- (1 : n)/n
 y <- vector(length = n)
@@ -110,3 +132,6 @@ dg=15
 # 将整个赋值语句放在括号里，就能在打印出结果的同时创建变量lmo，以免有时可能会用到它。
 print.polyreg (lmo)
 # 输出结果里最后几个均方差为NA，这里是因为摄入误差太高，使得R无法估计级数如此高的多项式模型
+
+# 新增代码，绘制图形，多次恩回车，达到插入数数据框的作用。
+plot.polyreg(lmo)

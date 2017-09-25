@@ -66,4 +66,29 @@ plot(testscores)
 lines(lowess(testscores))
 
 2.5 绘制具有显示表达式的函数
-例如绘制g(t)={(t^2+1)^0.5}
+例如绘制g(t)={(t^2+1)^0.5}在0到5之间的图像
+curvr((x^2+1)^0.5,0,5)
+curvr((x^2+1)^0.5,0,5,add=T)绘制在现有的图像上。
+或者使用plot()泛型函数的性质
+f <- function(){return((x^2+1)^0.5)}
+plot(f,0,5)
+
+3.将图像保存到文件
+3.1 R图形设备
+pdf("d12.pdf")打开一个文件
+dev.list()
+dev.cur()当前活动的文件
+dev.set(2)重新设置活动窗口
+dev.copy(which=3)将设备复制到pdf文件上
+dev.set(3)
+dev.off()关闭
+
+4.创建三维图形
+R提供了一系列的函数用来绘制三维图形，例如用persp()和wireframe()来绘制曲面图形
+用cloud绘制三维散点图。在此，我们将以一个简单的例子来说明wireframe()的用法。
+library(lattice)
+a <- 1:10
+b <- 1:15
+eg <- expand.grid(x=a,y=b)
+eg$z <- eg$x^2 + eg$x + eg$y
+wireframe(z~x+y , eg)
