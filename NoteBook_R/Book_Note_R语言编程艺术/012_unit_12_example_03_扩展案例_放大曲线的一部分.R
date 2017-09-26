@@ -78,19 +78,24 @@ crv<-function (expr, from = NULL, to = NULL, n = 101, add = FALSE,
 # x1 , y1 , x2 , y2 : coordinates of rectangular region to be magnified
 # x3 , y3 , x4 , x4 : coordinates of inset region
 inset <- function(savexy , x1 , y1 ,x2 , y2 , x3 , y3 , x4 , y4){
+	# savexy：返回函数的数值
 	rect(x1 , y1 , x2 , y2)
 	rect(x3 , y3 , x4 , y4)
 	# rect 函数用来在一张图上添加矩形，只需要指定左下角和右上角的坐标的位置，就可以画出一个矩形
 	# get vector of coordinates of previously plotter points
 	savex <- savexy$x
+	# 自变量x的取值范围
 	savey <- savexy$y
+	# 因变量y的数值
 	# get subscripts of xi our range to be magnified
 	n <- length(savex)
 	xvalsinrange <- which(savex >= x1 & savex <= x2)
+	# 获取放大部分的因变量的下标
 	yvalsforthosex <- savey[xvalsinrange]
+	# 获取放大部分的自变量的数值
 	# check that our first box contains the entire curve for that X range
 	if(any( yvalsforthosex < y1 | yvalsforthosex > y2)){
-		print("Y value oytside first box")
+		print("Y value outside first box")
 		return()
 	}
 	# record some differences
@@ -103,9 +108,13 @@ inset <- function(savexy , x1 , y1 ,x2 , y2 , x3 , y3 , x4 , y4){
 	plotpt <- function(i){
 		newx <- x3+((savex[i] - x1)/x2mnsx1)*x4mnsx3
 		newy <- y3+((savey[i] - y1)/y2mnsy1)*y4mnsy3
+		# 先标准化，再放大倍数
+		# 并让图像画在矩形里
 		return(c(newx , newy))
 	}
 	newxy <- sapply(xvalsinrange , plotpt)
 	lines(newxy[1 , ] , newxy[2 , ])
 }
 
+xyout <- crv(exp(-x)*sin(1/(x-1.5)) , 0.1 , 4 , n=5001)
+inset(xyout , 1.3 , -0.3 , 1.47 , 0.3 , 2.5 , -0.3 , 4 , -0.1 )
