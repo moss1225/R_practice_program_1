@@ -2,8 +2,8 @@
 	方法概要：用网格判断数据的集中程度，集中程度意味着是否有关联关系。
 	方法具有一般性，即无论数据怎样分布的，不限于特定的关联函数类型，次判断方法都是有效的。
 	方法具有有效性，计算的熵值和噪音程度有关，跟关联类型无关
-	MIC：the maximal information coefficient
-	MINE： maximal information-based Nonparametric Exploration
+	MIC：the maximal information coefficient    一种数值指标
+	MINE： maximal information-based Nonparametric Exploration   一种方法
 
 2、安装
 http://www.exploredata.net/Downloads.
