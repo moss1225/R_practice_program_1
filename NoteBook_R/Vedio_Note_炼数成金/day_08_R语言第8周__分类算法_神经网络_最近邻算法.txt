@@ -25,4 +25,7 @@
 
 4、在R语言中实现决策树：rpart扩展包
 	*以鸢尾花数据集作为算例是说明
-	
+iris.rp = rpart(Species~. , data = iris , method="class")
+plot(iris.rp , uniform = T , bunch =0 ,
+		margin=0.1 , main = "Classification Tree\nIris Species by Petal and Sepal Length")
+text(iris.rp , use.n=T , fancy =T , col ="blue")

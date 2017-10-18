@@ -29,18 +29,18 @@ k-项集：k个项组成的集合
 ***安装arules包进行购物篮分析
 ***内置Groceries数据集
 ↓    
-library(arules)#装载包
-data(Groceries)#调用数据文件
-inspect(Groceries)#观看数据集里的数据
-rules=apriori(Groceries,parameter=list(support=0.01,confidence=0.5))
+library(arules)	#	装载包
+data(Groceries)	#	调用数据文件
+inspect(Groceries)	#	观看数据集里的数据
+rules	=	apriori(Groceries,parameter=list(support=0.01,confidence=0.5))	#最后两个参数分别是支持度和置信度
 #↑利用aprior函数提取关联规则
+summary(rules) #	查看数据
 ***需要筛选关联规则
 x=subset(rules,subset=rhs%in%"whole milk"&lift>=1.2)
 #↑求所需的关联规则子集
 inspect(sort(x,by="support")[1:5])
 #↑根据支持度求得的关联规则子集排序并查查看
 ***其中lift=P(L,R)/(P(L)P(R))是一个类似相关系数的指标。left=1时表示L和R独立。这个数越大，表明L和R存在在一个购物篮中不是偶然现象。
-↑
 
 
 
