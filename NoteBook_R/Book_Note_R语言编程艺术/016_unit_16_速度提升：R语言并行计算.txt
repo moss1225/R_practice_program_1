@@ -1,0 +1,47 @@
+1、 共同外链问题
+	 考虑某个网络图，如网页链接或社会网络中的关系链接。令A表示该网络图的"邻接矩
+阵"（adjacent matrix），举例来说，A[3 , 8]的可能取值是1或0，其取值为表示节点3和节
+点8之间存在一个链接，否则取值为0。
+      对任意两个顶点（如两个网站）而言，我们可能会对他们的共同外链（mutua outlink）
+感兴趣——级这两个站点共同拥有的出站链接。假设现在我们想知道共同外链的平均数量，
+也就是在我们的数据集中对所有网站配对的共同外链数量取平均。这个均值可以用如下的步
+骤对一个n*m的矩阵进行计算得到：
+sum=0
+for i =0 ... n-1
+	for j =i+1 ... n-1
+		for k=0....n-1  sum = sum + a[i][k]*a[j][k]
+mean = sum / (n*(n-1)/2)
+       考虑到我们的图可能包含成千上万的网站，这一任务很可能需要大量的计算。对此，常
+见的处理方法是将计算任务分割成若干较小的块，然后同时处理每一份小块，例如在多台计
+算机上同时进行运算。
+       假如我们现在可以支配两台计算机，那么可以用其中的一台来处理第二行for i 循环中i
+等于奇数的情况，而让第二台处理 i 等于偶数的情况。或者，由于双核计算机在当前已经非常
+普遍，也可以将上面的步骤在一台计算机上完成。这听起来很简单，但事实上可能会遇上一
+些大问题。
+
+2、snow包简介
+		snow包无可争议的最简单、最容易使用的R语言并行计算包，同时也是最流行的R语言并行计算包之一。
+* 为了说明snow是如何工作的，下面先给出上一节共同外链问题的代码。
+# snow version of mutual links problem
+mtl <- function(ichunk , m){
+	n <- ncol(m)
+	matches <- 0
+	for(i in ichunk){
+		if(i < n){
+			rowi <- m[i , ]
+			matches <- maches + sum(m[i+1:n , ]%*% rowi )
+		}
+	}
+	matches
+}
+
+mutlinks <- function(cls , m){
+	n <- nrow(m)
+	nc <- length(cls)
+	# determine which worker gets which chunk of i 
+	options(warn = -1)
+	ichunks <- split(1:n , 1:nc)
+	options(warn = 0)
+	counts <- clusterApply(cls , ichunks ,mtl , m)
+	do.call(sum , counts) / (n*(n-1)/2)
+}
