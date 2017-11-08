@@ -1,31 +1,31 @@
-1ã€forå¾ªçŽ¯
+1¡¢forÑ­»·
 z <- c( 1:10 )
 for ( k in z ){ print ( k ) }
 
-2ã€whileå¾ªçŽ¯
+2¡¢whileÑ­»·
 z <-1
 while( z <= 10 ){ i = i + 4 }
 
-3ã€repeatå¾ªçŽ¯ å’Œ breakä¸­æ–­
+3¡¢repeatÑ­»· ºÍ breakÖÐ¶Ï
 repeat{
 	i < i + 4
 	if ( i > 10 ){ break }
 }
 
-4ã€nextè¯­å¥
-nextè¯­å¥è·³è¿‡æœ¬æ¬¡å¾ªçŽ¯çš„å‰©ä½™éƒ¨åˆ†ï¼Œç›´æŽ¥è¿›å…¥å¾ªçŽ¯çš„ä¸‹ä¸€æ¬¡è¿­ä»£ã€‚
+4¡¢nextÓï¾ä
+nextÓï¾äÌø¹ý±¾´ÎÑ­»·µÄÊ£Óà²¿·Ö£¬Ö±½Ó½øÈëÑ­»·µÄÏÂÒ»´Îµü´ú¡£
 i  <- 1
 while(i <= 100){
 i <- i+1
 if( i %% 4 != 0 ) next
-} # è¾“å‡º4çš„å€æ•°
+} # Êä³ö4µÄ±¶Êý
 
-5ã€å¯¹éžå‘é‡é›†åˆçš„å¾ªçŽ¯
-Rè¯­è¨€ä¸æ”¯æŒç›´æŽ¥å¯¹éžå‘é‡é›†åˆçš„å¾ªçŽ¯ï¼Œä½†æ˜¯æœ‰ä¸€äº›é—´æŽ¥çš„æ–¹æ³•å¯ä»¥åšåˆ°è¿™äº›ï¼š
-ï¼ˆ1ï¼‰ä½¿ç”¨lapply()å‡½æ•°
+5¡¢¶Ô·ÇÏòÁ¿¼¯ºÏµÄÑ­»·
+RÓïÑÔ²»Ö§³ÖÖ±½Ó¶Ô·ÇÏòÁ¿¼¯ºÏµÄÑ­»·£¬µ«ÊÇÓÐÒ»Ð©¼ä½ÓµÄ·½·¨¿ÉÒÔ×öµ½ÕâÐ©£º
+£¨1£©Ê¹ÓÃlapply()º¯Êý
 data <- list( a = c ( 1 , 2 , 3 , 4 ) , b = c (2 , 3 ,4 , 5 ) )
 lapply ( data , mean )
-ï¼ˆ2ï¼‰ä½¿ç”¨get()å‡½æ•°
+£¨2£©Ê¹ÓÃget()º¯Êý
 u <- matrix(c(1,1,2,2,3,4) , byrow = T , ncol =2)
 v <- matrix(c(8 , 15 , 12 , 10 , 20 , 2) , byrow = T , ncol =2)
 for( m in c( u , v )){
@@ -34,7 +34,7 @@ for( m in c( u , v )){
 	}
 }
 
-6ã€if-elseç»“æž„
+6¡¢if-else½á¹¹
 if( r == 4){
 	x=1
 }else{
@@ -42,16 +42,16 @@ if( r == 4){
 	y=4
 }
 
-7ã€è¿”å›žå€¼ return
-8ã€body(å‡½æ•°å)ã€page(å‡½æ•°å)æ‰“å°å‡½æ•°ä¿¡æ¯
+7¡¢·µ»ØÖµ return
+8¡¢body(º¯ÊýÃû)¡¢page(º¯ÊýÃû)´òÓ¡º¯ÊýÐÅÏ¢
 
-9ã€ä½œç”¨åŸŸ_é¡¶å±‚çŽ¯å¢ƒ
-environment(å‚æ•°)å‡½æ•°ï¼Œè¿”å›žå¯¹è±¡æ‰€åœ¨çŽ¯å¢ƒ
-ls()å‡½æ•°ï¼Œè°ƒç”¨è¯¥å‡½æ•°ï¼Œè¿”å›žè¯¥å‡½æ•°ä¸‹æ‰€æœ‰å¯¹è±¡
+9¡¢×÷ÓÃÓò_¶¥²ã»·¾³
+environment(²ÎÊý)º¯Êý£¬·µ»Ø¶ÔÏóËùÔÚ»·¾³
+ls()º¯Êý£¬µ÷ÓÃ¸Ãº¯Êý£¬·µ»Ø¸Ãº¯ÊýÏÂËùÓÐ¶ÔÏó
 
-10ã€å…³äºŽls()çš„è¿›ä¸€æ­¥è®¨è®º
-åœ¨å‡½æ•°ä¸­è°ƒç”¨ä¸å¸¦å‚æ•°çš„ls()ä¼šè¿”å›žå½“å‰çš„å±€éƒ¨å˜é‡ï¼ˆåŒ…æ‹¬å‚æ•°ï¼‰ã€‚
-ä½¿ç”¨envirå‚æ•°ï¼Œls()ä¼šè¾“å‡ºå‡½æ•°è°ƒç”¨é“¾ä¸­ä»»ä½•ä¸€ä¸ªæ¡†æž¶çš„å±€éƒ¨å˜é‡åã€‚
+10¡¢¹ØÓÚls()µÄ½øÒ»²½ÌÖÂÛ
+ÔÚº¯ÊýÖÐµ÷ÓÃ²»´ø²ÎÊýµÄls()»á·µ»Øµ±Ç°µÄ¾Ö²¿±äÁ¿£¨°üÀ¨²ÎÊý£©¡£
+Ê¹ÓÃenvir²ÎÊý£¬ls()»áÊä³öº¯Êýµ÷ÓÃÁ´ÖÐÈÎºÎÒ»¸ö¿ò¼ÜµÄ¾Ö²¿±äÁ¿Ãû¡£
 f<-function(){
 	d <- 8
 	return(h(d,y))
@@ -61,18 +61,18 @@ h<-function( dee , yyy ){
 	print(ls(envir=parent.frame(n=1)))
 	return(dee+(w+yyy))
 }
-è°ƒç”¨åŠè¿”å›žï¼š
+µ÷ÓÃ¼°·µ»Ø£º
 f(2)
 [1] "dee" "yyy"
 [1]"de"  "y"
 [1]112
-è¯´æ˜Žï¼š
-åœ¨parent.frame()ä¸­ï¼Œå‚æ•°nè®¾å®šäº†è¦æ²¿å‡½æ•°è°ƒç”¨é“¾å‘ä¸Šå‡ ä¸ªæ¡†æž¶ã€‚
-åœ¨è¿™é‡Œï¼Œå½“å‰æ­£åœ¨æ‰§è¡Œh()ï¼Œè€Œh()æ˜¯è¢«f()è°ƒç”¨çš„ï¼Œæ‰€ä»¥n=1æŒ‡çš„å°±æ˜¯f()çš„æ¡†æž¶ã€‚
-äºŽæ˜¯å°±å¾—åˆ°å®ƒçš„å±€éƒ¨å˜é‡ã€‚
+ËµÃ÷£º
+ÔÚparent.frame()ÖÐ£¬²ÎÊýnÉè¶¨ÁËÒªÑØº¯Êýµ÷ÓÃÁ´ÏòÉÏ¼¸¸ö¿ò¼Ü¡£
+ÔÚÕâÀï£¬µ±Ç°ÕýÔÚÖ´ÐÐh()£¬¶øh()ÊÇ±»f()µ÷ÓÃµÄ£¬ËùÒÔn=1Ö¸µÄ¾ÍÊÇf()µÄ¿ò¼Ü¡£
+ÓÚÊÇ¾ÍµÃµ½ËüµÄ¾Ö²¿±äÁ¿¡£
 
-11ã€å‡½æ•°(å‡ ä¹Ž)æ²¡æœ‰å‰¯ä½œç”¨
-å‡½æ•°å¼ç¼–ç¨‹å“²å­¦çš„å¦å¤–ä¸€ä¸ªç‰¹å¾æ˜¯ï¼Œå‡½æ•°ä¸ä¼šä¿®æ”¹éžå±€éƒ¨å˜é‡ã€‚
+11¡¢º¯Êý(¼¸ºõ)Ã»ÓÐ¸±×÷ÓÃ
+º¯ÊýÊ½±à³ÌÕÜÑ§µÄÁíÍâÒ»¸öÌØÕ÷ÊÇ£¬º¯Êý²»»áÐÞ¸Ä·Ç¾Ö²¿±äÁ¿¡£
 w <- 12
 f<-function(y){
 	d<-8
@@ -87,18 +87,18 @@ f<-function(y){
 t=4
 f(t)
 
-12ã€å‘ä¸Šçº§å±‚æ¬¡è¿›è¡Œå†™æ“ä½œ
-å¯¹å½“å‰å±‚æ¬¡ä¸Šçš„ä¸Šçº§å±‚æ¬¡ä¸­ä»»æ„å˜é‡è¿›è¡Œå†™æ“ä½œï¼Œ
-ä½ å¯ä»¥åœ¨å½“å‰å±‚æ­¤ä½¿ç”¨è¶…èµ‹å€¼è¿ç®—ç¬¦<<- 
-æˆ–è€…å‡½æ•°assin()ã€‚
-ï¼ˆ1ï¼‰è¶…èµ‹å€¼è¿ç®—ç¬¦
+12¡¢ÏòÉÏ¼¶²ã´Î½øÐÐÐ´²Ù×÷
+¶Ôµ±Ç°²ã´ÎÉÏµÄÉÏ¼¶²ã´ÎÖÐÈÎÒâ±äÁ¿½øÐÐÐ´²Ù×÷£¬
+Äã¿ÉÒÔÔÚµ±Ç°²ã´ËÊ¹ÓÃ³¬¸³ÖµÔËËã·û<<- 
+»òÕßº¯Êýassin()¡£
+£¨1£©³¬¸³ÖµÔËËã·û
 u<-2
 f<-function(){
 	u<<-3
 }
 u ; f() ; u
 
-ï¼ˆ2ï¼‰è¶…èµ‹å€¼è¿ç®—ç¬¦ï¼Œä»Žä¸Šçº§å±‚æ¬¡ä¸­é€å±‚å¯»æ‰¾ï¼Œä¿®æ”¹ä¸€æ¬¡
+£¨2£©³¬¸³ÖµÔËËã·û£¬´ÓÉÏ¼¶²ã´ÎÖÐÖð²ãÑ°ÕÒ£¬ÐÞ¸ÄÒ»´Î
 f<-function(){ 
 inc<-function(){x << x + 1}
 x=1
@@ -108,14 +108,14 @@ return(x)
 f()    (result : 4)
 x      (not found)
 
-ï¼ˆ3ï¼‰ç”¨assign()å‡½æ•°å¯¹éžå±€éƒ¨å˜é‡è¿›è¡Œå†™æ“ä½œ
+£¨3£©ÓÃassign()º¯Êý¶Ô·Ç¾Ö²¿±äÁ¿½øÐÐÐ´²Ù×÷
 two<-function(u){
 	assign("u" , u + 2 , pos = .GlobalEnv)
 	z<-2*z
 }
 
-13ã€é—­åŒ…ï¼šåŒ…å«äº†å‡½æ•°çš„å‚æ•°ã€å‡½æ•°ä½“ã€ä»¥åŠè°ƒç”¨æ—¶çš„çŽ¯å¢ƒã€‚
-é—­åŒ…åŒ…å«äº†ä¸€ä¸ªå¯åˆ›å»ºå±€éƒ¨å˜é‡çš„å‡½æ•°ï¼Œå¹¶åˆ›å»ºå¦ä¸€ä¸ªå‡½æ•°å¯ä»¥è®¿é—®è¯¥å˜é‡ã€‚
+13¡¢±Õ°ü£º°üº¬ÁËº¯ÊýµÄ²ÎÊý¡¢º¯ÊýÌå¡¢ÒÔ¼°µ÷ÓÃÊ±µÄ»·¾³¡£
+±Õ°ü°üº¬ÁËÒ»¸ö¿É´´½¨¾Ö²¿±äÁ¿µÄº¯Êý£¬²¢´´½¨ÁíÒ»¸öº¯Êý¿ÉÒÔ·ÃÎÊ¸Ã±äÁ¿¡£
 counter <- function(){
 	ctr <- 0
 	f <- function(){
@@ -123,7 +123,7 @@ counter <- function(){
 		cat("this count currently has value" , ctr , "\n")
 	}
 	return (f)
-	# å°†å‡½æ•°å’ŒçŽ¯å¢ƒå˜é‡å½“ä½œå‚æ•°è¿”å›ž
+	# ½«º¯ÊýºÍ»·¾³±äÁ¿µ±×÷²ÎÊý·µ»Ø
 }
 c1 <- counter()
 c1 <- counter()
@@ -132,15 +132,15 @@ c2 <- counter()
 c2 <- counter()
 c1 <- counter()
 
-14ã€é€’å½’
-	é€’å½’ï¼ˆrecursiveï¼‰å‡½æ•°ä¼šè°ƒç”¨è‡ªå·±æœ¬èº«ã€‚
-	é€šè¿‡å†™ä¸€ä¸ªé€’å½’å‡½æ•°f()æ¥è§£å†³Xç±»åž‹é—®é¢˜ï¼š
-	1.å°†Xç±»åž‹çš„åŽŸå§‹é—®é¢˜åˆ’åˆ†ä¸ºä¸€ä¸ªæˆ–æ›´å°çš„Xç±»åž‹é—®é¢˜ã€‚
-	2.åœ¨f()ä¸­ï¼Œå¯¹æ¯ä¸ªè¾ƒå°é—®é¢˜è°ƒç”¨f()å‡½æ•°ã€‚
-	3.ç„¶åŽå†åœ¨f()ä¸­ï¼Œå°†(2)ä¸­æ‰€æœ‰ç»“æžœæ•´åˆèµ·æ¥è§£å†³è¿™ä¸ªåŽŸå§‹é—®é¢˜ã€‚
+14¡¢µÝ¹é
+	µÝ¹é£¨recursive£©º¯Êý»áµ÷ÓÃ×Ô¼º±¾Éí¡£
+	Í¨¹ýÐ´Ò»¸öµÝ¹éº¯Êýf()À´½â¾öXÀàÐÍÎÊÌâ£º
+	1.½«XÀàÐÍµÄÔ­Ê¼ÎÊÌâ»®·ÖÎªÒ»¸ö»ò¸üÐ¡µÄXÀàÐÍÎÊÌâ¡£
+	2.ÔÚf()ÖÐ£¬¶ÔÃ¿¸ö½ÏÐ¡ÎÊÌâµ÷ÓÃf()º¯Êý¡£
+	3.È»ºóÔÙÔÚf()ÖÐ£¬½«(2)ÖÐËùÓÐ½á¹ûÕûºÏÆðÀ´½â¾öÕâ¸öÔ­Ê¼ÎÊÌâ¡£
 	
-15ã€Quicksortçš„å…·ä½“å®žè·µ	
-	Quicksortè¿™ç§ç®—æ³•ç”¨æ¥å°†æ•°å­—å‘é‡ä»Žå°åˆ°å¤§æŽ’åˆ—ã€‚
+15¡¢QuicksortµÄ¾ßÌåÊµ¼ù	
+	QuicksortÕâÖÖËã·¨ÓÃÀ´½«Êý×ÖÏòÁ¿´ÓÐ¡µ½´óÅÅÁÐ¡£
 	qs <- function(x){
 			if(length(x) <= 1 ) return(x)
 			pivot<-x[1]
@@ -152,21 +152,21 @@ c1 <- counter()
 			return(c(sv1 , pivot , sv2))
 	}
 	
-16ã€ç½®æ¢å‡½æ•°
+16¡¢ÖÃ»»º¯Êý
 
-17ã€å†™å‡½æ•°çš„ä»£ç å·¥å…·
-ï¼ˆ1ï¼‰source("xxx.R")å¼•å…¥Ræ–‡ä»¶
-ï¼ˆ2ï¼‰edit(functionA)
-# ç¼–è¾‘å‡½æ•° , ä¼šæ‰“å¼€é»˜è®¤ç¼–è¾‘å™¨è¿›è¡Œç¼–è¾‘
+17¡¢Ð´º¯ÊýµÄ´úÂë¹¤¾ß
+£¨1£©source("xxx.R")ÒýÈëRÎÄ¼þ
+£¨2£©edit(functionA)
+# ±à¼­º¯Êý , »á´ò¿ªÄ¬ÈÏ±à¼­Æ÷½øÐÐ±à¼­
 # f2 <- edit(f1) 
-# åˆ›å»ºä¸€ä¸ªä¸Žf1ç±»ä¼¼çš„f2ï¼Œå¹¶åœ¨å…¶åŸºç¡€ä¸Šè¿›è¡Œä¿®æ”¹
-ï¼ˆ3ï¼‰optionsï¼ˆeditor="/user/bin/vim"ï¼‰
-# åˆ‡æ¢é»˜è®¤ç¼–è¾‘å™¨
+# ´´½¨Ò»¸öÓëf1ÀàËÆµÄf2£¬²¢ÔÚÆä»ù´¡ÉÏ½øÐÐÐÞ¸Ä
+£¨3£©options£¨editor="/user/bin/vim"£©
+# ÇÐ»»Ä¬ÈÏ±à¼­Æ÷
 
-18ã€åˆ›å»ºè‡ªå·±çš„äºŒå…ƒè¿ç®—ç¬¦
+18¡¢´´½¨×Ô¼ºµÄ¶þÔªÔËËã·û
 "%a2bb"<-function(a , b) return (a+2*b)
 3 %a2bb 5
 [1] 13
 
-19ã€åŒ¿åå‡½æ•°
+19¡¢ÄäÃûº¯Êý
 z=function(x) x*2
