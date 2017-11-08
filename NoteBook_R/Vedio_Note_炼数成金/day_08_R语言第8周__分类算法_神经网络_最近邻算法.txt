@@ -29,3 +29,28 @@ iris.rp = rpart(Species~. , data = iris , method="class")
 plot(iris.rp , uniform = T , bunch =0 ,
 		margin=0.1 , main = "Classification Tree\nIris Species by Petal and Sepal Length")
 text(iris.rp , use.n=T , fancy =T , col ="blue")
+
+5、神经网络（ANN）
+	*感知器学习算法：
+令D={(Xi , Yi) | i =1,2,3...,N}是训练样例集
+用随机值初始化权值向量W(0)
+
+	*自学习算法
+repeat
+	for 每个训练样例(Xi , Yi)∈D do
+		计算测试输出Yi(k)
+		for 每个权限 Wj do
+			更新权值Yi(k+1)=Wj(k) +  λ (Yi -Yi(k))Xij
+		end for
+	end for
+until 满足终止条件
+
+	* 多层前馈神经网络（BP）：多层级的神经网络
+	* 常用名词：
+			输入节点：
+			输出节点：
+			权向量：
+			偏置因子：
+			激活函数：
+			学习率：
+	* 使用R语言实现人工神经网络（见案例2）
