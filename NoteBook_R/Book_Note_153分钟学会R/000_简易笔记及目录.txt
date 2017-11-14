@@ -1,0 +1,33 @@
+1、生成100个高斯（正态）分布随机数，并对100个数进行特征描述
+x <- rnorm(100  , mean = 5 , sd = 0.1)
+mean(x)
+sd(x)
+summary(x)
+
+2、demo( graphics ) # 使用demo()函数，查看图形显示。
+
+3、获取帮助
+	1）？topic或者help(topic)来获取帮助信息；
+	2）也可以使用help.search("topic")来搜索帮助系统
+	3）如果你只知道函数的部分名称，使用appropos("tab")来搜索得到载入内存所有包含tab字段的函数。
+	
+4、内存相关知识
+	1）启动R进程前，增加R启动参数。在CMD环境下，运行参加参数的Rterm；
+	r --max-mem-size=1Gb
+	2）或通过添加RHOME/bin至系统环境中，之间在运行中运行
+	rgui --max-mem-size=1Gb
+	
+5、使用Tab键自动补全函数
+
+6、清楚变量：清楚单个边使用rm()函数，清除内存中所有的变量；
+rm(list = ls(all=TRUE))
+
+7、修改小数点后面的额位数
+options(digits=位数)位数默认7，可添1-22。
+options函数还有很多全局选项，如改变提示符(prompt)，是否显示错误信息(show.error.messgages)等。
+
+8、如何调用系统内的程序
+使用system()函数或者用shell.exec()调用相应程序来打开文件：
+system(paste('"C:/Program Files/Internet Explore/iexplore.exe") , 'cran.r-project.org' , wait =FALSE)
+syetem("notepad")
+shell.exec("C:/WINDOWS/clock")
