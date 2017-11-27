@@ -1,0 +1,115 @@
+1、生成100个高斯（正态）分布随机数，并对100个数进行特征描述
+x <- rnorm(100  , mean = 5 , sd = 0.1)
+mean(x)
+sd(x)
+summary(x)
+
+2、demo( graphics ) # 使用demo()函数，查看图形显示。
+
+3、获取帮助
+	1）？topic或者help(topic)来获取帮助信息；
+	2）也可以使用help.search("topic")来搜索帮助系统
+	3）如果你只知道函数的部分名称，使用appropos("tab")来搜索得到载入内存所有包含tab字段的函数。
+	
+4、内存相关知识
+	1）启动R进程前，增加R启动参数。在CMD环境下，运行参加参数的Rterm；
+	r --max-mem-size=1Gb
+	2）或通过添加RHOME/bin至系统环境中，之间在运行中运行
+	rgui --max-mem-size=1Gb
+	
+5、使用Tab键自动补全函数
+
+6、清楚变量：清楚单个边使用rm()函数，清除内存中所有的变量；
+rm(list = ls(all=TRUE))
+
+7、修改小数点后面的额位数
+options(digits=位数)位数默认7，可添1-22。
+options函数还有很多全局选项，如改变提示符(prompt)，是否显示错误信息(show.error.messgages)等。
+
+8、如何调用系统内的程序
+使用system()函数或者用shell.exec()调用相应程序来打开文件：
+system(paste('"C:/Program Files/Internet Explore/iexplore.exe") , 'cran.r-project.org' , wait =FALSE)
+syetem("notepad")
+shell.exec("C:/WINDOWS/clock")
+
+9、library的逆向操作detach("package")
+
+10、得到加载package的列表
+.packages(all.avaliable=TRUE)
+
+11、R的数据类型
+ （1）字符
+ （2）数字
+ （3）整数
+ （4）逻辑
+ （5）复数
+ （6）列表
+ （7）因子
+ 
+ 12、data.frame是什么
+ data.frame(数据框)可以理解十一松散的数据集，他可以是由不同类型的列（数字、因子、字符等）
+ 组成的类矩阵（matrix-like）
+ 
+ 13、在R中公式的符号丢失什么意义
+ 	（1）常见lm、glm表示具体模型
+ 	（2）y~model是一种特殊的格式，y表示相应变量，模型为model。
+ 	（3）其中model中的变量以 + 来连接，或者由":"，来表示变量间的"相互作用"。
+ 	（4）我们使用"*"来表示'a+b+c'。(a+b+c)^2表示(a+b+c)*(a+b+c)，即主因子a、b、c和各个因子的交互作用。
+ 	（5）"-"表示去掉之意。(a+b+c)^2-a:b表示a+b+c+b:c+a:c，即去掉a和b之间的关系。
+ 	（6）公式中可以存在运算符号。
+ 	（7）"."表示已经存在之意。
+举例：
+	fm <- aov(Speed~Run + Expt)
+	fm0 <- update(fm , . ~ . -run)
+ 	
+ 14、输入输出
+ (1)通过foreign包，它可以读取minitab、s、sas、spss、stata、systat、dbass保存的数据
+ (2)read.cvs()读取cvs文件，cvs为excel常见数据储存类型。
+ (3)加载RODBC包，使用odbcConnectExcel()函数读取xls文件
+ 		library(RODBC)
+ 		z <- odbcConnectExcel("rexceltest.xls")
+ 		dd <- sqlFetch(z , "sheeting 1")
+ 		close(z)
+ (4)xlsReadWrite包中的read.xls函数。
+ 	
+ 15、可以将R中显示的接货输出到文件么？
+ data(CO2)
+ sink("CO2.txt")
+ sink() # go to your work directory , you will get co2.txt	
+# 理论上来说，参数split=TRUE把输出同时发送到屏幕和输出文件中。不加参数调用命令sink()将仅向屏幕返回输出结果。
+# 最后使用dev.off()，关闭“图形设备”，使 文件写入磁盘。
+ 
+ 16、如何调用R的输出信息
+ R提供了capture.output()函数，之歌函数可以将R的输出信息转换成字符串或文件
+ glmout <-capture.output(example(glm))
+ glmout[1:5]
+ 
+ 17、内存中读取数据
+ data<- read.table("clipboard")
+ write.table("clipboard") #write.table打印其所需的x后，将其转换为(一个数据框，如果它不是，也不是一个矩阵）文件或连接参数。
+ 
+ 18、怎么将椅子转化成数字
+ as.numeric(as.character(f))
+ 或者 as.numeric(levels(f))[as.charcter(f)]
+ 
+ 19、R可以使用电子报个输入数据么？
+ data <- data.frame()
+ edit(x)
+ fix(x)
+ 
+ 20、为什么当我使用source()时，不能显示输出结果？
+ 如果显示输出中包含print()，或者使用source(file,echo=TRUE)
+ 如果R代码中包含sink()之类的函数，必须使用source(file,echo=TRUE)，否则sink对象为空。
+ 
+ 21、R语言文件地址
+ (1) 在R里面使用必须使用双反斜杠或斜杠表示文件路径，比如：
+ (2) 使用file.chose函数打开一个Windows标准文件选择对话框，手动选择文件。
+ (3) 还可以使用choose.dir()打开Windows标准目录选择对话框。
+ 
+ 22、R语言直接读取数据库数据
+ （1）RMySQL包中提供了到MySQL数据库接口
+ （2）RODBC包提供了更为广泛数据库的解决方案
+		 library(RODBC)
+		 ch <- odbcConnet("stocksDSN" , uid = "myuser" , pwd="mypassword")
+		 stocks <- sqlQuery(ch , "select * from quotes")
+		 odbeClose(ch)
