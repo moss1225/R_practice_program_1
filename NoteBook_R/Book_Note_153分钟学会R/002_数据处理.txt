@@ -1,1 +1,81 @@
 1、如何删掉缺失值
+*在R使用NA表示缺失值，要注意R语言中NA同样是一个逻辑值。
+x<-NA
+x>3
+class(x)
+故当判断是否相等时不能使用
+x==NA
+来判断缺失值。而是使用函数is.na()函数来判断是否为缺失值，使用：
+x[!isna(x)]
+
+2、如何将字符串转换成命令行
+这里用到eval()和parse()函数。首先使用parse()函数将字符串转换成表达式，而后
+使用eval()函数对表达式求解。
+x<-1:10
+a<-"print(x)"
+class(a) # 显示字符串类型
+eval(parse(text = a))
+
+3、如何向一个向量追加元素？
+参考append()函数？
+x<-1:5
+(foo<- c(x[1],0,x[2:5]))
+append(x , 0 , after =1)
+
+4、如何移除某行(列)数据
+可以使用函数subset(select = )；或者使用下标
+x<-data.frame(matrix(1:30 , nrow=5 , byrow=T))
+dim(x)
+# dim(x):查看变量的维数；重新设置的维数，例如dim(x)=c(3,2)
+# dimnames(x):重新设置对象的名称
+print(x) 
+new.x1<-x[-c(1,4) , ] # remove row
+new.x2<-x[ , -c(2,3)] # remove col
+new.x1
+nem.x2
+事实上，关于选取特定条件下的数据框数据，subset函数同使用下标效果相同
+iS<-iris$Species == "setosa"
+iris[iS , c(1 , 3)]
+subset(iris , select =c(Sepal.Length , Petal.Length) , Species=="setosa")
+
+5、如何比较两个数据框是否相同？
+比较每个元素是否相同，如果每个元素都相同，那么至两个数据框也相同
+a1 <- data.frame(num = 1:8 , lib = letters[1:8])
+a2 <- a1
+a2[[3,1]]<- 2 ->a2[[8 , 2]]
+any(a1!=a2)
+ any()函数可以返回是值是否有一个为真的逻辑值。而数据框中的元素有不相等的情况，则
+a1 != a2
+将返回至少一个TRUE，那么any()函数将判断为TRUE。同样也可以使用identical()函数
+identical(a1 , a2)
+如果需要返回两个数据框不相同的位置，可以使用
+which(a1 != a2 , arr.ind =TRUE)
+arr.ind参数array indices之意，返回数据框的行列位置。
+
+6、我的数据框有相同的行，如何去掉这些行？
+参看unique函数，unque函数可以去掉向量、数据框或类似数列的数据中重复的元素。
+unique返回对象的不同取值，如unique(c(1,1,2,3)) 返回1 2 3
+duplicated 判断对象的每个取值是否重复，如duplicated(c(1,1,2,3)) 返回 FALSE  TRUE FALSE FALSE 。
+其中T对应的为重复的值。
+x<-c(9:20 , 1:5 , 3:7 , 0:8)
+(xu <- x [duplicated(x)])
+ # 带括号显示，显示结果
+ # duplicated函数返回了元素是否重复的逻辑值
+unique(x)
+# 补充
+()定义函数的参数
+()在运算中作为优先级
+[] 用做对象的元素索引
+{} 作为代码段落的起止
+
+7、如何对数列array进行维度变换？
+x <- array(1:24 , 2:4)
+xt <- aperm(x , c(2 , 1 , 3))
+dim(x)
+dim(xt)
+
+8、如何删除list中的元素？
+R中使用NULL表示无效的操作
+lst <- list("a"=list("b"=1 , “c"=2) , "b"=list("d"=3 , “e"=4))
+lst[["a"]]["b"]=NULL # 或者lst$a$b <- NULL
+lst
