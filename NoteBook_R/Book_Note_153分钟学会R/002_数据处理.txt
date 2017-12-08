@@ -79,3 +79,86 @@ R中使用NULL表示无效的操作
 lst <- list("a"=list("b"=1 , “c"=2) , "b"=list("d"=3 , “e"=4))
 lst[["a"]]["b"]=NULL # 或者lst$a$b <- NULL
 lst
+
+9、如何对矩阵按行（列）作计算？
+使用函数apply()
+vec=1:20
+mat=matrix(vec , ncol=4)
+vec
+consume(vec)
+mat
+apply(mat , 2 , consume)
+apply(mat , 2 , consume)
+
+10、如何消掉大段R脚本
+1、# 注释
+2、if(FALSE){something passby}
+
+11、如何对数据框(data frame)的某列作数据变换？
+使用transform()函数对其操作，具体参看?transform
+
+12、如何求解两组平行向量的极值？
+pmax()和pmin()，如：
+x <- 1:10 ; y <- rev(x) # rev()反序
+pmax(x , y) ; pmin(x , y)
+12、知识补充
+<-c(1,4,6,2,4,5,2)
+rev(a)  #依据下标进行倒排序
+    [1] 2 5 4 2 6 4 1
+sort(a) #依据大小进行正排序
+    [1] 1 2 2 4 4 5 6
+rev(sort(a)) #依据大小进行倒排序
+    [1] 6 5 4 4 2 2 1
+
+13、如何对不规则数组进行统计分析？
+(1)参考tapply():
+n<-17
+fac <- factor( rep( 1:3 , len = n) , levels =1:5)
+table( fac )
+tapply(1:n , fac , sum) # tapply( 数据 , 因子 , 函数)，根据因子进行分类，然后进行运算。
+tapply(1:n , fac , mean)
+## or reverse a list
+to <-list(a = 1 , b = 1 , c = 2 , d =1 )
+tapply(to , unlist(to) , names )
+
+(2)tapply()的常见于方差分析中对各个组别进行mean、var(sd)的计算。说到概要统计，不得不说另
+外一个函数aggregate()，它将tapply()函数对象为向量的限制扩展到了数据库。
+attach(warpbreaks)
+tapply(breaks , list(wool , tension) , mean)
+aggregate(breaks , list(wool , tension) , mean)
+## from the help
+aggregate(state.x77,
+				list(Region = state.region,
+				Cold = state.x77[ , "Frost"] > 130) ,
+				mean)
+
+14、判断数据框的是否为数字？
+sapply(dataframe , ismueric)
+
+15、一组书中随机抽取数据？
+函数sample()
+		sample(n)											随机组合1,.......,n
+		sample(x)											随机组合向量x , length(x)>1
+		sample(x , replace=T)						解靴带法
+		sample(x , n)										非放回的从x中抽取n项
+		sample(x , n , replace=T)					放回的从x中抽取n项
+		sample(x , n , replace=T , prob = T)	以概率p，放回的从x中抽取n项
+		
+n <- 1000
+x <- sample(c(-1 , 1) , n , replace=T)
+plot(cumsum(x) , type="l", main="Cumulated sums of Bernoulli variables")
+
+16、如何根据共有的列将两个数据合并
+我们经常会遇见两个数据框拥有相同的时间和预测值，但这些列却不尽相同。处理的办法就是使用
+merge(x , y , by.x= , by.y= , all= )函数
+
+17、如何将数据标准化？
+参考scale函数
+x <- c(rnorm(100) , 2*rnorm(30))
+m<- scale(x , scale=F) # only centering
+n<-scale(x , center=F) # only scaling
+
+18、为什么flvenum和summary两个函数返回值的结果不同？
+以为他们对税局描述机理一直，所以有些教材将两者等同，但是确实有细微差别。
+flvenum(c(1 , 4 , 6 , 17 , 50 , 51 , 70 , 100))
+summary(c(1 , 4 , 6 , 17 , 50 , 51 , 70 , 100))

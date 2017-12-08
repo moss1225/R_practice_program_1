@@ -1,0 +1,15 @@
+1、R对大小写敏感吗？
+R中有很多基于Unix的包，故R对大小写是敏感的。可以使用tolower()、toupper()、casefold()
+这类函数对字符串进行转化。
+>> x <- "MiXeD  cAsR 123"
+>> chartr("iXs" , "why" , x) 		# [1] "MwheD  cAyR 123" # 将i\X\s分别转换成w\h\y
+>> chartr("a-cX" , "D-Fw" , x) 	# [1] "MiweD  FAsR 123"
+>> tolower(x)
+>> toupper(x)
+
+2、R运行结果输出到文件中时，文件名可以用变量替代吗？
+可以，使用paste()函数。
+>> for( var in letters[1 : 6]){
+>> 	x <- var
+>> 	write.table(x , paste("FOO_" , var , ".txt" , sep="")) 
+>> }

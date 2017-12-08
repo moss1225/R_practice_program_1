@@ -1,0 +1,77 @@
+1、如何做出曲线积分
+R语言使用integrate函数来得到积分结果，如：
+i>> ntegrate(dnorm , -1.96 , 1.96)
+>> integrate(dnorm , -Inf , Inf)
+	# a slowly -convergent integral
+>> integrand<-function(x){1/( (x+1)*sqrt( x )) }
+>> integrate(integrand , lower = 0 , upper =Inf)
+
+2、如何得到列向量
+矩阵转置可以使用函数t()，R中默认x为"integer"类型数据，这时可以用t(t(x))得到列向量：
+>> x <- 1:10 ; class(x) # class()数据类型
+>> t(x) ; class(t(x))
+>> t(t(x)) ; class(t(t(x)))
+
+3、计算(x)^T*x（计算xx^T使用%o%或者outer()函数）。crossprod()函数能避免这种情况：
+>> X^T.y <- crossprod(X , y)
+它直接计算X^T*Y，可以看做前者的另一种表达方式，当然crossprod()更为有效。
+由于outer()函数的矩阵意义，它常用与三维绘图数据，比如我们计算：
+>> 10*sin((x^2+y^2)^(1/2))/(x^2+y^2)^(1/2)
+那么对应的R函数就算为：
+>> f <- function(x , y){ r <- sqrt(x^2+y^2) ; 10*sin(r)/r }
+>> z <- outer( x , y , f )
+
+4、R进行复数计算？
+参考complex()函数的帮助
+>> x <- 1+ 1i # x<- complex(1 , 1)
+>> Mod( x ) ; Conj( x )
+
+5、如何生成对角矩阵？
+向一个向量使用diag()函数，得到对角线元素为向量的对角矩阵；对整数Z使用此函数得到Z维
+的单位矩阵。
+
+6、求矩阵的特征值和特征向量的函数是什么》
+参考eigen()
+
+7、如何构造上（下）三角矩阵？
+参考函数lower.tri()和upper.tri()
+>> Rmat <- matrix(1:16 , 4 , 4)
+>> Rmat[lower.tri(Rmat)] <- 0
+>> Rmat
+
+8、求立方根运算
+>> "^"(x , 1/3)
+
+9、如何求矩阵各行（列）的均值
+如果运算量不是很大，当然可以使用apply()函数，rowMeans()和colMeans()函数可以更快地得到
+你要的结果。
+>> m<-1000 ; n <- 3000
+>> A <- matrix(1:m*n , m , n)
+>> system.time(B1 <- matrix(apply(A , 2 , mean) , m , n , by=T))
+>> system.time(B2 <- matrix(colMeans(A) , m , n , by=T))
+
+10、如何计算组合数或得到所有组合？
+choose()用来计算组合A(n , k)，函数combn()可以得到所有元素的组合。使用fatorial计算阶乘。
+
+11、如何在R里面求（偏）导数？
+使用函数D()
+>> f1 <- expression(sin(x)+x)
+>> f2 <- expression(x^2*y + y^2)
+>> D(f1 , "x")
+
+12、如何求一元方程的解
+	使用uniroot()函数，不过uniroot是基于二分法来计算方程根，当初始区间不能满足要求时，会返回错误信息。
+>> f <- function(x) x^3 - 2*x - 1
+>> uniroot(f , c (0 , 1))
+	如果一元方程的跟恰好是其极值，那么还可以使用optimize()函数来求极值。
+>> f <- function(x) x^2 + 2*x + 1
+optimize(f , c(-2 , 2))
+
+13、如何模拟高斯（正态）分布数据？
+使用rnorm(n , mean , sd)来产生n个来自均值为mean，标准差为sd的高斯(正态)分布的数据。
+在R里面通过分布前增加字幕"d"表示密度函数，"p"表示累积分布函数，"q"表示分为书函数，
+"r"表示产生改分布的随机数。这些分布具体可以参考第20页中"如何做密度曲线"，或
+R-intro中Probability distributions章节，或
+>> help.search("distribution")
+计算这些函数的概率，比如P(2 <= X <= 5)
+>> pnorm(5 , 3 , 1) -  pnorm(2 , 3 , 1)
