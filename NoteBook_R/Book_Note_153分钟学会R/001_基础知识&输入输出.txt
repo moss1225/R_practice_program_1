@@ -88,7 +88,7 @@ shell.exec("C:/WINDOWS/clock")
  data<- read.table("clipboard")
  write.table("clipboard") #write.table打印其所需的x后，将其转换为(一个数据框，如果它不是，也不是一个矩阵）文件或连接参数。
  
- 18、怎么将椅子转化成数字
+ 18、怎么将字符转化成数字
  as.numeric(as.character(f))
  或者 as.numeric(levels(f))[as.charcter(f)]
  
