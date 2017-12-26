@@ -37,7 +37,7 @@ dataP=data.frame(list(
 	province=c("A" , "B" , "C" , "D" ,"A" ,  "C" , "D"  , "B" , "C" , "D"),
 	sale=c(1:10)
 ))
-attach(da)	#	attach() 和 detach()，attach使得year代替dataP$year
+attach(dataP)	#	attach() 和 detach()，attach使得year代替dataP$year
 tapply(sale , list(year , province))
 tapply(sale , list(year,province) , mean)
 
