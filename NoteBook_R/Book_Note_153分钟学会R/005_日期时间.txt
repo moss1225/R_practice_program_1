@@ -1,0 +1,13 @@
+1、日期可以做算数运算么？
+可以。一般我们需要as.Date()，as.POSIXct()函数将读取的日期（字符串）转换为"Date"类型
+数据，"Date"类型数据可以进行算数运算。
+d1 <- c("06/29/07") ; d2 <- c("07/02/07")
+D1 <- as.Date(d1 , "%m/%d/%y")
+D2 <- as.Date(d2 , "%m/%d/%y")
+D1+2 ; D2 - 2
+difftime(D1 , D2 , units="days")
+
+2、如何将日期转换为"星期日，22 七月 2007 "这种格式？
+使用format()函数
+format(Sye.Date() , format="%A , %D %B %Y")
+具体format参数可以参考help(strptime)的detail部分。

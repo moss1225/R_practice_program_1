@@ -13,3 +13,19 @@ R中有很多基于Unix的包，故R对大小写是敏感的。可以使用tolower()、toupper()、casefo
 >> 	x <- var
 >> 	write.table(x , paste("FOO_" , var , ".txt" , sep="")) 
 >> }
+
+3、在R中如何使用正则表达式
+在R中，有三种类型的正则表达式：extended regular expressions，使用函数grep(extended=TRUE)
+(默认)；basic regular expressions，使用grep(extended = FALSE)；Prel-like regular expressions，使
+用grep(perl=TRUE)。比如"."用来匹配任意字符（使用".\"来匹配"."）：
+grep("J." , month.abb)
+详细可以参考help("regex")
+
+4.如何在字符串中选取特定位置的字符
+参考substr()函数。
+	substr("abcdef" , 2 , 4)
+	substring("abcdef" , 1:6 , 1:6)
+	substr(date(),12,19)
+	
+5.如何返回字符串个数
+nchar(month.name[9])	

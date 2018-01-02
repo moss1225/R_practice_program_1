@@ -30,6 +30,6 @@ for ( i in levDistrict){
     # print( paste(i , sumDistrict))
 	# 将结果返回到结果集合
 	addDistrict <- data.frame(District=c(i) , sumNum=c(sumDistrict) , stringsAsFactors =F)
-	print(addDistrict)
+	# print(addDistrict)
 	DistrictData <- data.frame(District=c(DistrictData$District , addDistrict$District) , sumNum=c(DistrictData$sumNum , addDistrict$sumNum) , stringsAsFactors =F)
 }

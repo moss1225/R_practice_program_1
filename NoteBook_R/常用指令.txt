@@ -41,4 +41,9 @@
 4.数据框：
 	d<-data.frame(list(gender=c("M","M","F","M","F","F") , age=c(47 , 59 , 21 , 32 , 33 , 24 ) , income=c(55000 , 88000 , 32450 , 76500 , 123000 , 45650)))
 5.因子和表：
-table( d<-data.frame(list(gender=c("M","M","F","M","F","F") , race=c("W","W","A","O","B","B" ) , pol=c("L","L","C","L","L","C"))))
+    table( d<-data.frame(list(gender=c("M","M","F","M","F","F") , race=c("W","W","A","O","B","B" ) , pol=c("L","L","C","L","L","C"))))
+
+#查找所有D盘统计下的所有文件
+	dir("D:/统计",full.names=T,all.files=T，recursive=T)
+#如果是第一个就是要找的
+	dir("D:/统计",full.names=T,all.files=T,recursive=T)[1]
