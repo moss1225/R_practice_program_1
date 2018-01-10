@@ -1,0 +1,16 @@
+1、数据类型
+	1）数值型：整数、双精度型数据
+	2）字符串：在双引号或单引号之间的字符串
+	3）逻辑性：T(TRUE)或F(FALSE)
+	4）复数性：形如a+bi形式的复数
+	5）原始型：这种类型以二进制形式保存数据
+	6）默认值：NA，任何NA运算结果都是NA，用is.na()函数判别
+	
+数据类型		判别函数			转换函数
+character			is.character()		as.character()
+complex			is.complex()			as.complex()
+double				is.double()				as.double()
+integer				is.integer()			as.integer()
+logical				is.logical()				as.logical()
+NA					is.na()					as.na()			
+numeric			is.numeric()			as.numeric()

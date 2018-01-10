@@ -1,0 +1,30 @@
+1、R自带的包
+base、datasets、utils、stats、grDevices、graphics和methods包
+
+2、安装包
+	1）install.packages(c("class" , "cluster"))
+	# 安装class和cluster包
+	2）RStudio安装包
+	点击右下角packages，点击install packages。
+	
+3、载入包
+	1）library("class")
+	2）RSsudio勾选
+	
+4、升级包
+	1）update.packages()
+	2）RStudio，点击"Check forUpdate"
+	
+5、R包的使用
+ 	1）help(package="class")
+ 	2）RStudio，点击右侧"class"
+ 	
+ 6、工作空间
+ 	getwd()						显示当前工作目录
+ 	setwd()							修改当前工作目录
+ 	ls()								列出当前工作空间的所有对象
+ 	rm()								删除一个或多个对象
+ 	help()							显示可用选项说明
+ 	save.image("myfile")		保存工作空间到文件myfile.RDate
+ 	load("myfile")				读取一个工作空间
+ 	q()								退出

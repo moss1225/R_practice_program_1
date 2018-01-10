@@ -65,3 +65,11 @@ par(new = T , mar = c(10 , 4 , 10 ,6) + 0.1)
 plot(x2 , axes = FLASE , xlab="" , ylab="" , col="red" ,type="b")
 metext("UR(%)" , 4 , 3 , col="red")
 axis(4 , col ="red" , col.axis = "red")
+
+10、如何为绘图加入网格？
+plot(1:3)
+grid(NA , 5 , lwd =2)
+
+11、如何标题过长，如何换行？
+可以使用strwrap函数，这个函数可以将定义段落格式。
+plot(0 , main=paste( strwrap("this is a really long title that i can not type it propertly" , width = 50) , collapse = "\n" ) )
