@@ -1,1 +1,67 @@
 1、如何在同一画面画出多张图？
+		这里提供三种解决方案：
+		1、修改绘图参数，如par(mfrow = c(2 , 2)) 或 par(mfcol = c(2 , 2)) ；
+		2、更为强大功能的layout函数，它可以设置图形绘制顺序和图形大小；
+		3、split.screen()函数
+		推荐使用layout()函数，Statistics with R 的一个例子：
+		layout(matrix(c(1 , 1 , 1 ,
+								 2 , 3 , 4 ,
+								 2 , 3 , 4 ) , nrow=3 , byrow=T))
+		hist(rnorm(25) , col = "VioletRed")
+		hist(rnorm(25) , col = "VioletRed")
+		hist(rnorm(25) , col = "VioletRed")
+		hist(rnorm(25) , col = "VioletRed")
+		
+2、如何设置图形边缘大小
+修改绘图参数par(mar = c(bottom , left , top , right)，bottom , left , top , right四个参数分别是距
+离bottom , left , top , right的长度，默认距离是c(5,4,4,2)+0.1。或者修改绘图参数par(mai = c
+(bottom , lef , top , right))，以英寸为单位来制定边缘大小。
+
+3、常用的pch符号有哪些？
+pch是plotting character缩写。pch符号可以使用"0:25"来表示26个标识（参看右图"pch符号"）。
+当然符号也可以使用# , % , * , | , . , o , O。值得注意的是，21:25这几个符号可以在points函数
+使用不同的颜色填充(bg=参数)。
+op <- par(bg = "light blue")
+x <- seq(0 , 2*pi , len=51)
+plot(x , sin(x) , type="o" ,bg=par("bg") )
+points(x , sin(x) , pch=21 , cex=1.5 , bg="red")
+
+4、如何在已有图形上加一条水平线
+使用低水平绘图命令abline()，它可以作出水平线、垂线和斜线。
+R中的绘图命令可以分为"高水平(High_level)"、"低水平(Low_level)"和"交互式(Interactive)"三种绘图命令。
+       简单地说，"高水平"绘图命令可以在图形设备上绘制新图；"低水平"绘图命令将在已经存在
+图形上添加更多的绘图信息，如点、线、多边形等；使用"交互式"绘图命令创建的图形，可以使用
+如鼠标这类的定点装置来添加或提取绘图信息。在已有图形上添加信息当然使用"低水平"绘图命令。
+
+5、如何做密度曲线
+常用的办法是：做出x的一个序列，然后做出dfunction(x)，比如：
+x=seq(-3 , 3 , .05)
+plot(x , dnorm(x) , type="1")
+lines(x , dt(x , 1) , col ="red")
+
+6、如何加图例
+绘制图形后，使用函数legend，help("legend")
+with(iris , plot(Sepal.Length , Sepal.Width , pch=as.numeric(Species) , cex=1.2))
+legend(6.1 , 4.4 , c("setosa" , "versicolor" , "virginica" ) , cex=1.5 , pch=1:3)
+
+7、怎样做饼图
+参考pie()函数，饼图展示数据的能力较差，因为我们的眼睛对长度单位比较敏感，而对关联区域和
+角度感觉较差。建议使用条形图（bar chart）和点图（dot chart）。
+
+8、如何做茎叶图
+stem(faithful$eruptions)
+
+9、如何做双坐标图？
+在R中可以通过绘图参数par(new =TRUE)是的绘制第二个绘图（high-level plot）时保留第一绘图区域
+这样两张绘图会重叠一起，看起来就是双坐标图。下面的例子是在统一张图上绘制GDP和失业率（UR）：
+year <- 1995:2005
+x1 <- data.frame( year , GDP=sort(rnorm(11 , 1000 , 100)))
+x2 <- data.frame( year , UR = rnorm(11 , 5 ,1))
+par(mar = c(5 , 4 , 4 , 6)+0.1)
+plot(x1 , axes = FALSE , type="1")
+axis(1 , at = year , label = year) 
+axis(2) #将轴添加到当前图，允许指定边，位置，标签和其他选项
+par(new = T , mar = c(10 , 4 , 10 ,6) + 0.1)
+plot(x2 , axes = FLASE , xlab="" , ylab="" , col="red" ,type="b")
+metext("UR(%)" , 4 , 3 , col="red")
+axis(4 , col ="red" , col.axis = "red")
