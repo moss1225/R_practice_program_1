@@ -10,8 +10,8 @@ rt.a1 <- rpart( a1 ~ . , data = algae[ , 1:12])
 first.tree <- rt.a1
 prettyTree(rt.a1)
 # 使用rpart()函数构建书，在构建树的过程中，当给定条件满足时构建过程就停止。
-# 1）偏差的减少小于摸一个给定限制时；
-# 2）当结点中的样本数量小于某个给定界限时；
-# 3）当树的深度大于一个给定界限值。
+# 1）偏差的减少小于摸一个给定限制时，称mp；
+# 2）当结点中的样本数量小于某个给定界限时，称minisplit；
+# 3）当树的深度大于一个给定界限值，称maxdepth。
 first.tree <- snip.rpart(first.tree )
 prettyTree(first.tree)
